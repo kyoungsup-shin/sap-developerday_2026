@@ -12,6 +12,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from src.prompt_model.lesson_support.config import load_settings
 from src.reranker.lab_core import run_decision_recommendation
 from src.prompt_model.lab_core import compare_prompts, run_chat
+from src.prompt_model.prompts import CHAT_SYSTEM_PROMPT
 from src.embeddings.lab_core import compare_embeddings
 from src.embedding_reranker.lab_core import run_embedding_reranker_comparison
 from src.business_embedding.lab_core import load_business_cases, run_business_embedding_lab
@@ -24,7 +25,7 @@ def main() -> None:
     prompt.add_argument("question", nargs="?", default="LLM의 기본 아키텍처를 한 문장으로 설명해줘.")
     chat = commands.add_parser("chat", help="01 UI: send one chat turn through the core")
     chat.add_argument("message", nargs="?", default="LLM의 기본 아키텍처를 한 문장으로 설명해줘.")
-    chat.add_argument("--system-prompt", default="너는 친절한 교육 보조자다. 한국어로 간결하게 답한다.")
+    chat.add_argument("--system-prompt", default=CHAT_SYSTEM_PROMPT)
     chat.add_argument("--model", default=None)
     embedding = commands.add_parser("embedding", help="02: compare embedding similarities")
     embedding.add_argument("texts", nargs="*", default=["apple", "orange", "phone"])

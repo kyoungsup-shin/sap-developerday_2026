@@ -11,17 +11,16 @@ from collections.abc import Iterator
 from typing import Any, Callable
 
 from .prompt_model.lab_core import (
-    ADAPTIVE_REACT_SYSTEM_INSTRUCTION,
     REACT_SYSTEM_INSTRUCTION,
 )
+from .prompt_model.prompts import CHAT_SYSTEM_PROMPT
 from .prompt_model.lesson_support.config import load_settings
 from src.reranker.demo_cases import ORDER_RISK_DEMO_CASES
 
 
 MODE_SYSTEM_PROMPTS = {
-    "chat": "너는 친절한 교육 보조자다. 한국어로 간결하게 답한다.",
+    "chat": CHAT_SYSTEM_PROMPT,
     "react": REACT_SYSTEM_INSTRUCTION,
-    "adaptive_react": ADAPTIVE_REACT_SYSTEM_INSTRUCTION,
 }
 
 
@@ -61,7 +60,6 @@ def build_chat_ui(
     chat_runner: Callable[..., dict[str, str]],
     chat_stream_runner: Callable[..., Iterator[str]] | None = None,
     react_agent_runner: Callable[..., dict[str, Any]] | None = None,
-    adaptive_react_agent_runner: Callable[..., dict[str, Any]] | None = None,
 ):
     """Create a chat UI that can also run the bounded ReAct exercise."""
     gr = _gradio()
@@ -75,19 +73,24 @@ def build_chat_ui(
                 if isinstance(task, dict)
             ]
             summary = ", ".join(subtasks) or "질문을 분석해 필요한 작업을 정했습니다."
-            entries = [("Plan", summary), ("Observation", "작업 계획을 만들었습니다.")]
+            entries = [
+                ("Plan", summary),
+                ("Observation · &lt;observation&gt;", "작업 계획을 만들었습니다."),
+            ]
         else:
             entries: list[tuple[str, str]] = []
             if thinking := str(step.get("thinking", "")).strip():
                 entries.append(("Thought · &lt;thinking&gt;", thinking))
             if action := str(step.get("action", "")).strip():
-                entries.append(("Action", action))
+                entries.append(("Action · &lt;action&gt;", action))
             if observation := str(step.get("observation", "")).strip():
-                entries.append(("Observation", observation))
+                entries.append(("Observation · &lt;observation&gt;", observation))
             if evaluation := str(step.get("evaluation", "")).strip():
                 entries.append(("Evaluation · &lt;evaluation&gt;", evaluation))
             if answer := str(step.get("answer", "")).strip():
                 entries.append(("Final Answer · &lt;answer&gt;", answer))
+            if not entries:
+                entries.append(("실행 상태", "표시할 ReAct 실행 기록이 반환되지 않았습니다."))
 
         return "".join(
             '<li class="react-timeline__step react-timeline__step--completed">'
@@ -147,18 +150,13 @@ def build_chat_ui(
         selected_model = chat_config.get("model_name", "").strip() or settings.llm_model
         system_prompt = chat_config.get("system_prompt", "")
         try:
-            if chat_config.get("mode") in {"react", "adaptive_react"}:
-                is_adaptive = chat_config.get("mode") == "adaptive_react"
-                agent_runner = adaptive_react_agent_runner if is_adaptive else react_agent_runner
-                if agent_runner is None:
-                    message = (
-                        "Adaptive ReAct 에이전트 실행기가 연결되지 않았습니다."
-                        if is_adaptive else "ReAct 에이전트 실행기가 연결되지 않았습니다."
-                    )
+            if chat_config.get("mode") == "react":
+                if react_agent_runner is None:
+                    message = "ReAct 에이전트 실행기가 연결되지 않았습니다."
                     updated = [*next_history, {"role": "assistant", "content": message}]
                     yield "", updated, render_chat_view(updated)
                     return
-                outcome = agent_runner(
+                outcome = react_agent_runner(
                     message=message,
                     settings=settings,
                     history=_history_messages(history),
@@ -285,10 +283,9 @@ def build_chat_ui(
                 choices=[
                     ("일반 Chat", "chat"),
                     ("ReAct Agent (계산 도구)", "react"),
-                    ("Adaptive ReAct Agent", "adaptive_react"),
                 ],
                 value="chat",
-                info="ReAct Agent는 계산 도구를 사용합니다. Adaptive ReAct Agent는 먼저 질문을 분류하고 하위 작업을 역할별로 배정한 뒤 실행합니다.",
+                info="ReAct Agent는 계산 도구를 사용합니다.",
             )
             with gr.Row():
                 save_settings_button = gr.Button("적용", variant="primary")
