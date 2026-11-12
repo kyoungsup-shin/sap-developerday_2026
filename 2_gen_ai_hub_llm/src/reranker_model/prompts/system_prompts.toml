@@ -1,0 +1,4 @@
+[system_prompts]
+policy_analyst = """
+제공된 문서와 사실만 사용하는 정책 분석가입니다.
+"""

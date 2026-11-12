@@ -120,37 +120,7 @@ CALIBRATION_EXAMPLES = [
 Requester = Callable[..., Any]
 StateTranslator = Callable[[str], str]
 
-TASK_STATE_TRANSLATION_INSTRUCTION = """Translate the user's Korean business task state into concise English for an enterprise routing model.
-Preserve every identifier, date, amount, urgency, approval requirement, missing-information condition, and business meaning.
-Do not classify, summarize away details, add facts, or answer the request. Return only the English task state."""
-
-
-SEMANTIC_COORDINATOR_CONTRACT = """You are an A2A semantic coordinator.
-Choose from the candidate contracts by interpreting the task's meaning and lifecycle, not by matching words or candidate order. Return JSON only with next_agent, handoff_mode, risk, and priority.
-
-Execution-agent contracts:
-- hr_agent: handle employee, organization, staffing, recruiting, attendance, leave, capability, workforce planning, or HR policy questions.
-- scm_agent: handle demand and supply, inventory, warehouse, procurement, supplier, material, order fulfilment, transport, delivery, ETA, or logistics questions.
-- rnd_agent: handle product or service requirements, research, experiments, prototypes, formulation, design, technical feasibility, validation, or improvement questions.
-
-Handoff contracts:
-- delegate_now: the selected read-only Agent has the identity and purpose required to start.
-- request_evidence: a required identifier or operational context is missing.
-- request_human_approval: a contract, budget, policy, liability, or irreversible exception needs authorized approval.
-If approval is needed, choose the execution Agent that can collect the relevant facts and set request_human_approval; do not invent a human Agent candidate.
-
-Risk contracts:
-- low: bounded inquiry without an immediate operational impact.
-- medium: schedule, cost, or commitment impact while operations can continue.
-- high: an imminent production stop, safety incident, contract breach, or critical-operation failure.
-
-Priority contracts:
-- 0: can wait within normal operating cadence.
-- 1: needs a plan or resolution this week to avoid growing impact.
-- 2: needs action today because severe impact is occurring or imminent.
-
-Valid values are next_agent=hr_agent|scm_agent|rnd_agent; handoff_mode=delegate_now|request_evidence|request_human_approval; risk=low|medium|high; priority=0|1|2.
-"""
+from .prompts import SEMANTIC_COORDINATOR_CONTRACT, TASK_STATE_TRANSLATION_INSTRUCTION
 
 
 def _required_text(value: str, name: str) -> str:
@@ -171,8 +141,8 @@ def translate_task_state_to_english(
         translated = translator(cleaned)
     else:
         try:
-            from src.orchestration.lesson_support.config import load_settings as load_llm_settings
-            from src.orchestration.lesson_support.llm import chat_text
+            from .lesson_support.config import load_settings as load_llm_settings
+            from .lesson_support.llm import chat_text
         except ImportError as error:
             raise RuntimeError("Task-state translation에 필요한 AI Core LLM 모듈이 없습니다.") from error
         settings = load_llm_settings()
@@ -190,8 +160,8 @@ def translate_task_state_to_english(
 def _semantic_answers(state: str) -> dict[str, Any]:
     """Use an AI Core LLM to apply the candidate contracts to a task state."""
     try:
-        from src.orchestration.lesson_support.config import load_settings as load_llm_settings
-        from src.orchestration.lesson_support.llm import chat_text
+        from .lesson_support.config import load_settings as load_llm_settings
+        from .lesson_support.llm import chat_text
     except ImportError as error:
         raise RuntimeError("A2A semantic coordinator에 필요한 AI Core LLM 모듈이 없습니다.") from error
 

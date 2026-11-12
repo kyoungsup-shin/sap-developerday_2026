@@ -17,7 +17,7 @@ from zoneinfo import ZoneInfo
 
 from .lesson_support.ai_core import _aicore_sdk_client, apply_ai_core_environment, list_running_deployments
 from .lesson_support.config import Settings
-from src.grounding.object_storage import ObjectStorageConfig
+from .object_storage import ObjectStorageConfig
 
 DATASET_PATH = Path(__file__).resolve().parents[2] / "data" / "risk_prova_educational.csv"
 RANDOM_SEED = 20261021

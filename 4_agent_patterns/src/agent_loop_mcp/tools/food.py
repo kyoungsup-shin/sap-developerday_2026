@@ -6,7 +6,7 @@ from typing import Any
 
 import requests
 from ..lesson_support.llm import chat_text
-from src.agent_to_agent_advanced.agent_client import generate_image_data_url
+from ..agent_client import generate_image_data_url
 
 from ..prompts import get_prompt
 

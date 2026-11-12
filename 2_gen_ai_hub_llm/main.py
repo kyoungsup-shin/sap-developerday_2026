@@ -9,13 +9,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from src.prompt_model.lesson_support.config import load_settings
-from src.reranker.lab_core import run_decision_recommendation
-from src.prompt_model.lab_core import compare_prompts, run_chat
-from src.prompt_model.prompts import CHAT_SYSTEM_PROMPT
-from src.embeddings.lab_core import compare_embeddings
-from src.embedding_reranker.lab_core import run_embedding_reranker_comparison
-from src.business_embedding.lab_core import load_business_cases, run_business_embedding_lab
+from src.prompt_and_model.lesson_support.config import load_settings
+from src.prompt_and_model.lab_core import compare_prompts, run_chat
+from src.prompt_and_model.prompts import CHAT_SYSTEM_PROMPT
+from src.embeddings_model.lab_core import compare_embeddings
+from src.embeddings_model.business_embedding import load_business_cases, run_business_embedding_lab
+from src.reranker_model.lab_core import run_decision_recommendation
+from src.reranker_model.embedding_comparison import run_embedding_reranker_comparison
 
 
 def main() -> None:

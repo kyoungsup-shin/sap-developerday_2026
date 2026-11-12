@@ -1,0 +1,4 @@
+[system_prompts]
+context_only = """
+Answer only from the provided context. Say when context is insufficient.
+"""

@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1580" viewBox="0 0 2200 1580" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="2052" viewBox="0 0 2200 2052" role="img" aria-labelledby="title desc">
   <title id="title">Orchestration Agent Key Points</title>
-  <desc id="desc">Five orchestration-agent key points mapped to their solutions.</desc>
+  <desc id="desc">Seven orchestration-agent key points mapped to their solutions.</desc>
   <defs>
     <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#fbf8ff"/>
@@ -18,7 +18,7 @@
       .number { font-family: Arial, sans-serif; font-size: 29px; font-weight: 800; fill: #ffffff; }
     </style>
   </defs>
-  <rect x="16" y="16" width="2168" height="1548" rx="34" fill="url(#background)"/>
+  <rect x="16" y="16" width="2168" height="2020" rx="34" fill="url(#background)"/>
   <rect x="72" y="72" width="198" height="60" rx="30" fill="#7844aa"/>
   <text x="171" y="111" text-anchor="middle" class="number" font-size="23">SUMMARY</text>
   <text x="72" y="218" class="heading" font-size="60">Orchestration Agent Key Points</text>
@@ -30,6 +30,8 @@
     <rect x="72" y="808" width="2056" height="194" rx="24" fill="#ffffff"/>
     <rect x="72" y="1044" width="2056" height="194" rx="24" fill="#ffffff"/>
     <rect x="72" y="1280" width="2056" height="194" rx="24" fill="#ffffff"/>
+    <rect x="72" y="1516" width="2056" height="194" rx="24" fill="#ffffff"/>
+    <rect x="72" y="1752" width="2056" height="194" rx="24" fill="#ffffff"/>
   </g>
 
   <g>
@@ -58,5 +60,15 @@
     <text x="220" y="1352" class="eyebrow">KEY POINT</text><text x="220" y="1400" class="cardtitle">SubAgent Context</text>
     <text x="1090" y="1396" text-anchor="middle" class="body" font-size="58" font-weight="300">→</text>
     <text x="1190" y="1352" class="eyebrow">SOLUTION</text><text x="1190" y="1400" class="solution">Managed Joule Assistant &amp; Agent</text>
+
+    <circle cx="145" cy="1613" r="38" fill="#7844aa"/><text x="145" y="1623" text-anchor="middle" class="number">6</text>
+    <text x="220" y="1588" class="eyebrow">KEY POINT</text><text x="220" y="1636" class="cardtitle">SubAgent ML Tool</text>
+    <text x="1090" y="1632" text-anchor="middle" class="body" font-size="58" font-weight="300">→</text>
+    <text x="1190" y="1588" class="eyebrow">SOLUTION</text><text x="1190" y="1636" class="solution">Narrow AI (RPT Tabular Classification)</text>
+
+    <circle cx="145" cy="1849" r="38" fill="#7844aa"/><text x="145" y="1859" text-anchor="middle" class="number">7</text>
+    <text x="220" y="1824" class="eyebrow">KEY POINT</text><text x="220" y="1872" class="cardtitle">SubAgent Report Tool</text>
+    <text x="1090" y="1868" text-anchor="middle" class="body" font-size="58" font-weight="300">→</text>
+    <text x="1190" y="1824" class="eyebrow">SOLUTION</text><text x="1190" y="1872" class="solution">BAIP Orchestration</text>
   </g>
 </svg>

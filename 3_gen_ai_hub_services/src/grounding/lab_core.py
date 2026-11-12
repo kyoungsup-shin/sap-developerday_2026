@@ -11,6 +11,7 @@ from .lesson_support.ai_core import (
     orchestration_url,
 )
 from .lesson_support.config import Settings
+from .prompts import CONTEXT_ONLY_SYSTEM_PROMPT
 
 
 def _sdk() -> dict[str, Any]:
@@ -96,7 +97,7 @@ def build_help_grounded_service(settings: Settings, *, streaming: bool = False) 
     ))
     prompt = sdk["PromptTemplatingModuleConfig"](
         prompt=sdk["Template"](template=[
-            sdk["SystemMessage"](content="Answer only from the provided context. Say when context is insufficient."),
+            sdk["SystemMessage"](content=CONTEXT_ONLY_SYSTEM_PROMPT),
             sdk["UserMessage"](content="Request: {{?user_query}}\nContext: {{?grounding_response}}"),
         ]),
         model=sdk["LLMModelDetails"](name=settings.llm_model, params=llm_model_params(settings, max_tokens=1000)),
@@ -136,7 +137,7 @@ def build_vector_grounded_service(settings: Settings, *, repository_id: str) -> 
     ))
     prompt = sdk["PromptTemplatingModuleConfig"](
         prompt=sdk["Template"](template=[
-            sdk["SystemMessage"](content="Answer only from the provided context. Say when context is insufficient."),
+            sdk["SystemMessage"](content=CONTEXT_ONLY_SYSTEM_PROMPT),
             sdk["UserMessage"](content="Request: {{?user_query}}\nContext: {{?grounding_response}}"),
         ]),
         model=sdk["LLMModelDetails"](name=settings.llm_model, params=llm_model_params(settings, max_tokens=1000)),

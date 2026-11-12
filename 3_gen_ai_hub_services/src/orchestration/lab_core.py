@@ -11,6 +11,7 @@ from .lesson_support.ai_core import (
     orchestration_url,
 )
 from .lesson_support.config import Settings
+from .prompts import DEFAULT_ASSISTANT_SYSTEM_PROMPT
 
 
 _REGISTRY_CONFIG_PATH = "/registry/v2/orchestrationConfigs"
@@ -216,5 +217,5 @@ def build_orchestration_service(settings: Settings, *, system_prompt: str, max_t
 
 def run_orchestration(query: str, settings: Settings) -> str:
     return _answer(build_orchestration_service(
-        settings, system_prompt="You are a concise, helpful assistant."
+        settings, system_prompt=DEFAULT_ASSISTANT_SYSTEM_PROMPT
     ).run(placeholder_values={DEFAULT_INPUT_PLACEHOLDER: _required(query, "질문")}))

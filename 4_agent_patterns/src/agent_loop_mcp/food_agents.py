@@ -7,7 +7,7 @@ from typing import Any
 
 from .lesson_support.llm import chat_text, chat_text_stream
 from .lesson_support.config import Settings, load_settings
-from src.agent_to_agent_advanced.agent_client import chat_tool_completion
+from .agent_client import chat_tool_completion
 
 from .agents.registry import (
     FOOD_AGENT_BY_ID,

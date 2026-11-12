@@ -13,7 +13,7 @@ from uuid import uuid4
 from a2a.types import AgentCard
 from .lesson_support.llm import chat_text
 from .lesson_support.config import Settings, load_settings
-from src.agent_to_agent_advanced.agent_client import chat_tool_completion
+from .agent_client import chat_tool_completion
 
 from .catalog import (
     AGENT_CATALOG,

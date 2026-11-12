@@ -1,0 +1,4 @@
+[system_prompts]
+default_assistant = """
+You are a concise, helpful assistant.
+"""
