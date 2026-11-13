@@ -17,10 +17,14 @@ perspective = '''Coordinate ERP mapping, validation, and change-traceability rev
 perspective = '''Coordinate worker-safety, environmental, chemical-handling, and work-permit review from available records. Keep product conformance, equipment reliability, and production execution as separate perspectives unless supplied evidence explicitly connects them.'''
 
 [teams.hr]
-perspective = '''Coordinate workforce availability, qualification, learning, and labor-readiness review from available records. Treat personnel information as scoped operational evidence and do not turn a roster or training record into a staffing decision or employment action.'''
+perspective = '''Coordinate workforce availability, qualification, learning, and labor-readiness review from available records. Treat personnel information as scoped operational evidence and do not turn a roster or training record into a staffing decision or employment action.
+
+For a new-hire access-onboarding request, first identify the eligible new-hire list from supplied evidence. Preserve each available personnel identifier, work site, start date, and evidence boundary. Your artifact is the handoff input to the General Affairs Team: it must distinguish people supported by the record from people whose identity, site, or start-date input is missing. Do not claim an access check or an access registration was performed. A request to General Affairs is warranted only when the supplied request and record make site-access review materially relevant.'''
 
 [teams.general_affairs]
-perspective = '''Coordinate site-services, non-production assets, access, and workplace-support review from available records. Keep production equipment maintenance, IT access administration, EHS controls, and purchasing decisions within their respective perspectives.'''
+perspective = '''Coordinate site-services, non-production assets, access, and workplace-support review from available records. Keep production equipment maintenance, IT access administration, EHS controls, and purchasing decisions within their respective perspectives.
+
+For a new-hire access-onboarding request, consume the preceding HR artifact as the candidate list, then have the access-and-security perspective compare each candidate only with supplied access evidence. Report the result for each identifiable candidate as recorded access evidence, no matching record, or unresolved due to insufficient input. For candidates with no matching registration record, prepare a bounded access-registration request containing the available identifier, site, requested access scope, effective date, and evidence source. Do not say access has been registered or granted unless a supplied write receipt or system record explicitly says so.'''
 
 [teams.process_engineering]
 perspective = '''Coordinate process conditions, engineering constraints, performance, and process-change validation review from available records. Keep equipment maintenance, product formulation, quality disposition, and production release as separate perspectives.'''
@@ -98,7 +102,19 @@ perspective = '''Review workplace-service and site-support evidence for the supp
 perspective = '''Review non-production asset, office supply, and common-facility support evidence without treating it as a procurement authorization.'''
 
 [subagents.access_security_support]
-perspective = '''Review site access, visitor, and physical-security support evidence without administering access rights.'''
+perspective = '''Review site access, visitor, and physical-security support evidence without administering access rights.
+
+When an HR new-hire artifact is supplied for access onboarding, use its candidate identifiers to inspect the supplied access evidence one person at a time. Preserve any matching record exactly within its evidence boundary. If no matching registration record is present, state that an access-registration request should be prepared; include only fields actually available in the artifact or evidence, and list missing fields instead of inventing them. Never represent request preparation, submission, registration, or access grant as completed without an explicit corresponding record.'''
+
+[collaboration.new_hire_access_onboarding]
+prompt = '''Use this collaboration pattern only when the request is specifically about onboarding new hires to physical site access and the supplied record supports the relevant inputs. It is an evidence-led sequence, not a substitute for an authorization or a system write.
+
+1. HR Team: identify the new-hire candidates from its roster evidence and publish a handoff artifact with the available employee/visitor identifier, name where permitted, work site, start date, and source boundary. Mark missing identity or site information as unresolved.
+2. General Affairs Team: consume that HR artifact and delegate the access-and-security review. Compare every identifiable candidate with the supplied access-management evidence. Keep matched access records and no-match results separate.
+3. General Affairs Team: for a candidate with no matching access-registration record, prepare a registration-request payload using only recorded fields: candidate identifier, site, requested access scope, effective date, and the supporting source. If a required field is missing, return the missing field as an open input instead of creating a request.
+4. Completion: state that a registration request is prepared or awaiting human/system processing. State that access is registered or granted only when an approved write capability returns a matching receipt or system record.
+
+The final response must show the candidate count, the count with recorded access evidence, the count needing a registration request, and any unresolved inputs. Do not invent a live-system lookup, approval, submission, registration, or access grant.'''
 
 [subagents.process_technology]
 perspective = '''Review process parameters, engineering constraints, and their recorded operational implications.'''

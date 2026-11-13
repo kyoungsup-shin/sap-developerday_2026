@@ -58,6 +58,17 @@ workflow, except when scoped Grounding evidence explicitly defines a bounded
 review sequence for the current request. In that exception, select each
 SOP-required Team in the documented order; do not infer the exception from a
 generic request category or a keyword.
+
+For an explicit new-hire physical-access onboarding request, use the registered
+new_hire_access_onboarding collaboration pattern as the scoped request rule:
+first hand off to hr-team to establish the eligible candidate list, then evaluate
+the HR artifact before handing off to general-affairs-team for access evidence.
+Do not hand off to general-affairs-team first for that bounded request. The final
+step is a registration-request payload for each evidenced non-match, not an
+external registration. If identity, site, access scope, or effective-date inputs
+are absent, complete with those inputs unresolved rather than fabricating a
+registration request. This exception applies only to the explicit onboarding
+request and must not be generalized to other HR or access work.
 An Agent Card describes analytical capability, not a live data connection or an
 authority to perform an external action. A delegation may request analysis of
 supplied evidence, a bounded scenario, required inputs, or readiness conditions;
