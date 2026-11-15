@@ -247,6 +247,8 @@ def build_chat_ui(
     .react-timeline__marker::after{display:block;color:#fff;content:"✓";font-size:10px;font-weight:900;line-height:14px;text-align:center}
     .react-timeline__content{min-height:0;padding:7px 10px;border:1px solid #d7e3eb;border-radius:8px;background:#fff;box-shadow:0 1px 2px rgba(48,73,94,.05)}
     .react-timeline__title{color:#314b64;font-size:12px;font-weight:800}.react-timeline__content p{margin:3px 0 0;color:#25313d;font-size:12px;line-height:1.4;overflow-wrap:anywhere}
+    #chat-header-actions{justify-content:flex-end;gap:8px}
+    #chat-header-actions button{white-space:nowrap}
     """
     with gr.Blocks(css=modal_css, fill_width=True, theme=_light_theme(gr)) as app:
         gr.Markdown(
@@ -258,9 +260,12 @@ def build_chat_ui(
             "model_name": settings.llm_model,
             "mode": "chat",
         })
-        with gr.Row():
-            gr.Markdown("질문을 입력해 대화를 시작하세요.")
-            open_settings = gr.Button("⚙️ 설정", size="sm")
+        with gr.Row(equal_height=True):
+            with gr.Column(scale=1):
+                gr.Markdown("질문을 입력해 대화를 시작하세요.")
+            with gr.Row(scale=0, min_width=220, elem_id="chat-header-actions"):
+                clear = gr.Button("대화 지우기", size="sm")
+                open_settings = gr.Button("⚙️ 설정", size="sm")
         chat_history = gr.State([])
         chat_view = gr.HTML(render_chat_view([]))
         with gr.Row(equal_height=True):
@@ -268,7 +273,6 @@ def build_chat_ui(
                 placeholder="메시지를 입력하세요…", show_label=False, scale=8,
             )
             send = gr.Button("보내기", variant="primary", scale=1)
-        clear = gr.Button("대화 지우기", size="sm")
         with gr.Column(visible=False, elem_id="chat-settings-modal") as settings_modal:
             gr.Markdown("### 채팅 설정")
             system_prompt = gr.Textbox(
