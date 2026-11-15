@@ -263,7 +263,7 @@ def build_chat_ui(
         with gr.Row(equal_height=True):
             with gr.Column(scale=1):
                 gr.Markdown("질문을 입력해 대화를 시작하세요.")
-            with gr.Row(scale=0, min_width=220, elem_id="chat-header-actions"):
+            with gr.Row(scale=0, elem_id="chat-header-actions"):
                 clear = gr.Button("대화 지우기", size="sm")
                 open_settings = gr.Button("⚙️ 설정", size="sm")
         chat_history = gr.State([])
