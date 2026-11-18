@@ -36,38 +36,55 @@
 
   <g>
     <circle cx="145" cy="433" r="38" fill="#7844aa"/><text x="145" y="443" text-anchor="middle" class="number">1</text>
-    <text x="220" y="408" class="eyebrow">KEY POINT</text><text x="220" y="456" class="cardtitle">Orchestration Delegation 판단</text>
+    <text x="220" y="385" class="eyebrow">KEY POINT</text>
+    <text x="220" y="430" class="cardtitle" font-size="24">업무 요청을 이해할 근거를 어떻게 확보할까?</text>
+    <text x="220" y="470" class="body" font-size="18" font-weight="700">(Orchestration Delegation 근거)</text>
     <text x="1090" y="452" text-anchor="middle" class="body" font-size="58" font-weight="300">→</text>
-    <text x="1190" y="408" class="eyebrow">SOLUTION</text><text x="1190" y="456" class="solution">RPT Decision Route</text>
-    <rect x="1512" y="416" width="104" height="34" rx="17" fill="#efe4ff"/><text x="1564" y="439" text-anchor="middle" class="body" font-size="16" font-weight="800" fill="#6b3a96">GA 예정</text>
+    <text x="1190" y="408" class="eyebrow">SOLUTION</text><text x="1190" y="456" class="solution">BAIP Grounding</text>
 
     <circle cx="145" cy="669" r="38" fill="#7844aa"/><text x="145" y="679" text-anchor="middle" class="number">2</text>
-    <text x="220" y="644" class="eyebrow">KEY POINT</text><text x="220" y="692" class="cardtitle">Orchestration Delegation 정확도</text>
+    <text x="220" y="621" class="eyebrow">KEY POINT</text>
+    <text x="220" y="666" class="cardtitle" font-size="24">업무 근거 기반 Agent 할당 결과를 수집·평가하는 방법?</text>
+    <text x="220" y="706" class="body" font-size="18" font-weight="700">(Orchestration Delegation 판단)</text>
     <text x="1090" y="688" text-anchor="middle" class="body" font-size="58" font-weight="300">→</text>
-    <text x="1190" y="644" class="eyebrow">SOLUTION</text><text x="1190" y="692" class="solution">Agent with ReAct CoT</text>
+    <text x="1190" y="644" class="eyebrow">SOLUTION</text><text x="1190" y="692" class="solution">RPT Decision Route</text>
+    <rect x="1512" y="652" width="104" height="34" rx="17" fill="#efe4ff"/><text x="1564" y="675" text-anchor="middle" class="body" font-size="16" font-weight="800" fill="#6b3a96">GA 예정</text>
 
     <circle cx="145" cy="905" r="38" fill="#7844aa"/><text x="145" y="915" text-anchor="middle" class="number">3</text>
-    <text x="220" y="880" class="eyebrow">KEY POINT</text><text x="220" y="928" class="cardtitle">Orchestration Delegation 근거</text>
+    <text x="220" y="857" class="eyebrow">KEY POINT</text>
+    <text x="220" y="902" class="cardtitle" font-size="24">Orchestration Agent의 작업 할당 정확도를 높이는 방법?</text>
+    <text x="220" y="942" class="body" font-size="18" font-weight="700">(Orchestration Delegation 정확도)</text>
     <text x="1090" y="924" text-anchor="middle" class="body" font-size="58" font-weight="300">→</text>
-    <text x="1190" y="880" class="eyebrow">SOLUTION</text><text x="1190" y="928" class="solution">BAIP Grounding</text>
+    <text x="1190" y="880" class="eyebrow">SOLUTION</text><text x="1190" y="928" class="solution">Agent with ReAct CoT</text>
 
     <circle cx="145" cy="1141" r="38" fill="#7844aa"/><text x="145" y="1151" text-anchor="middle" class="number">4</text>
-    <text x="220" y="1116" class="eyebrow">KEY POINT</text><text x="220" y="1164" class="cardtitle">Orchestration Delegation 거버넌스</text>
+    <text x="220" y="1093" class="eyebrow">KEY POINT</text>
+    <text x="220" y="1138" class="cardtitle" font-size="24">작업 할당 과정의 권한·정책을 관리하는 방법?</text>
+    <text x="220" y="1178" class="body" font-size="18" font-weight="700">(Orchestration Delegation 거버넌스)</text>
     <text x="1090" y="1160" text-anchor="middle" class="body" font-size="58" font-weight="300">→</text>
     <text x="1190" y="1116" class="eyebrow">SOLUTION</text><text x="1190" y="1164" class="solution">Joule Studio &amp; Agent Gateway</text>
 
     <circle cx="145" cy="1377" r="38" fill="#7844aa"/><text x="145" y="1387" text-anchor="middle" class="number">5</text>
-    <text x="220" y="1352" class="eyebrow">KEY POINT</text><text x="220" y="1400" class="cardtitle">SubAgent Context</text>
+    <text x="220" y="1329" class="eyebrow">KEY POINT</text>
+    <text x="220" y="1374" class="cardtitle" font-size="24">SubAgent가 필요한 맥락을 이어받게 하는 방법?</text>
+    <text x="220" y="1414" class="body" font-size="18" font-weight="700">(SubAgent Context)</text>
     <text x="1090" y="1396" text-anchor="middle" class="body" font-size="58" font-weight="300">→</text>
-    <text x="1190" y="1352" class="eyebrow">SOLUTION</text><text x="1190" y="1400" class="solution">Managed Joule Assistant &amp; Agent</text>
+    <text x="1190" y="1328" class="eyebrow">SOLUTION</text>
+    <text x="1190" y="1370" class="solution" font-size="22">&#8226; Managed Joule Assistant &amp; Agent</text>
+    <text x="1190" y="1410" class="solution" font-size="22">&#8226; Knowledge graph</text>
+    <text x="1190" y="1450" class="solution" font-size="22">&#8226; BAIP Grounding</text>
 
     <circle cx="145" cy="1613" r="38" fill="#7844aa"/><text x="145" y="1623" text-anchor="middle" class="number">6</text>
-    <text x="220" y="1588" class="eyebrow">KEY POINT</text><text x="220" y="1636" class="cardtitle">SubAgent ML Tool</text>
+    <text x="220" y="1565" class="eyebrow">KEY POINT</text>
+    <text x="220" y="1610" class="cardtitle" font-size="24">SubAgent에 ML 도구를 효과적으로 연결하는 방법?</text>
+    <text x="220" y="1650" class="body" font-size="18" font-weight="700">(SubAgent ML Tool)</text>
     <text x="1090" y="1632" text-anchor="middle" class="body" font-size="58" font-weight="300">→</text>
     <text x="1190" y="1588" class="eyebrow">SOLUTION</text><text x="1190" y="1636" class="solution">Narrow AI (RPT Tabular Classification)</text>
 
     <circle cx="145" cy="1849" r="38" fill="#7844aa"/><text x="145" y="1859" text-anchor="middle" class="number">7</text>
-    <text x="220" y="1824" class="eyebrow">KEY POINT</text><text x="220" y="1872" class="cardtitle">SubAgent Report Tool</text>
+    <text x="220" y="1801" class="eyebrow">KEY POINT</text>
+    <text x="220" y="1846" class="cardtitle" font-size="24">SubAgent의 리포트 도구를 연결하는 방법?</text>
+    <text x="220" y="1886" class="body" font-size="18" font-weight="700">(SubAgent Report Tool)</text>
     <text x="1090" y="1868" text-anchor="middle" class="body" font-size="58" font-weight="300">→</text>
     <text x="1190" y="1824" class="eyebrow">SOLUTION</text><text x="1190" y="1872" class="solution">BAIP Orchestration</text>
   </g>
