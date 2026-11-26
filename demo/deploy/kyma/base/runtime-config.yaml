@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: a2a-demo-runtime-config
+data:
+  ALLOW_WRITE_TOOLS: "false"
+  DJANGO_DEBUG: "false"
+  LLM_MODEL: gpt-5.6-luna
+  DEMO_TEAM_HOST: 0.0.0.0
+  DEMO_TEAM_PORT: "8091"
+  DEMO_TEAM_BASE_URL: http://127.0.0.1:8091
+  DEMO_TEAM_TASK_TIMEOUT: "240"
+  DEMO_MAX_CONCURRENT_CHATS: "2"
+  DEMO_HARNESS_STATE_DIR: /app/demo/backend/data/harness_state
+  DEMO_EVALUATION_DIR: /app/demo/backend/data/evaluations
+  DEMO_EVALUATION_BASE_URL: http://127.0.0.1:8080

@@ -1,0 +1,19 @@
+apiVersion: gateway.kyma-project.io/v2
+kind: APIRule
+metadata:
+  name: a2a-demo
+  labels:
+    app.kubernetes.io/name: a2a-demo
+spec:
+  gateway: kyma-system/kyma-gateway
+  hosts:
+    - replace-me.example.com
+  service:
+    # The SPA is the sole public service. It proxies /api internally to Gateway.
+    name: a2a-demo-frontend
+    port: 80
+  rules:
+    - path: /*
+      methods: [GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS]
+      # This is an intentionally public, time-limited demo endpoint.
+      noAuth: true

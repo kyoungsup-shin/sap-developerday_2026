@@ -1,0 +1,34 @@
+[
+  {
+    "viewport": 1440,
+    "passed": true,
+    "checks": [
+      "six tabs",
+      "draft retention",
+      "Prompt/Tool/Data/Grounding/Runtime/RPT/Evaluation save",
+      "conflict preservation",
+      "invalid-save preservation",
+      "Card check",
+      "comma input",
+      "Chat retained",
+      "no page overflow",
+      "no JavaScript errors"
+    ]
+  },
+  {
+    "viewport": 390,
+    "passed": true,
+    "checks": [
+      "six tabs",
+      "draft retention",
+      "Prompt/Tool/Data/Grounding/Runtime/RPT/Evaluation save",
+      "conflict preservation",
+      "invalid-save preservation",
+      "Card check",
+      "comma input",
+      "Chat retained",
+      "no page overflow",
+      "no JavaScript errors"
+    ]
+  }
+]

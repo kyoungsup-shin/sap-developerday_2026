@@ -1,0 +1,23 @@
+.system-prompt {
+  counter-reset: none;
+}
+
+.system-prompt li {
+  grid-template-columns: 52px minmax(0, 1fr);
+  gap: 16px;
+  padding: 8px 18px;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+.system-prompt li::before {
+  content: attr(data-line);
+  counter-increment: none;
+  padding-top: 2px;
+  line-height: 1.75;
+}
+
+.system-prompt li.blank {
+  min-height: 10px;
+  padding-block: 0;
+}

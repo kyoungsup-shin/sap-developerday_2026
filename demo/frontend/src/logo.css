@@ -1,0 +1,21 @@
+/* Wordmarks keep their full aspect ratio inside square icon frames. */
+.brand-mark,
+.learning-brand > img {
+  display: block;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  object-fit: contain;
+  object-position: center;
+  padding: 4px;
+}
+
+.message-avatar > img,
+.graph-node > img,
+.hierarchy-node > img,
+.specialist-node > img {
+  display: block;
+  box-sizing: border-box;
+  object-fit: contain;
+  object-position: center;
+  padding: 2px;
+}

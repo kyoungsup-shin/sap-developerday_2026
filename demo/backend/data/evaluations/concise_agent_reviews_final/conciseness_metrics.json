@@ -1,0 +1,213 @@
+[
+  {
+    "scenario": "strawberry_order",
+    "reviews": {
+      "subagent_message_delta": [
+        {
+          "words": 85,
+          "headings": 0
+        },
+        {
+          "words": 101,
+          "headings": 0
+        },
+        {
+          "words": 54,
+          "headings": 0
+        },
+        {
+          "words": 73,
+          "headings": 0
+        }
+      ],
+      "team_message_delta": [
+        {
+          "words": 80,
+          "headings": 0
+        },
+        {
+          "words": 87,
+          "headings": 0
+        }
+      ],
+      "orchestrator_message_delta": [
+        {
+          "words": 137,
+          "headings": 0
+        }
+      ]
+    },
+    "team_failures": [],
+    "final_rpt": "safe_failure"
+  },
+  {
+    "scenario": "cip_seal_kit",
+    "reviews": {
+      "subagent_message_delta": [
+        {
+          "words": 65,
+          "headings": 0
+        },
+        {
+          "words": 63,
+          "headings": 0
+        },
+        {
+          "words": 60,
+          "headings": 0
+        },
+        {
+          "words": 53,
+          "headings": 0
+        },
+        {
+          "words": 56,
+          "headings": 0
+        },
+        {
+          "words": 57,
+          "headings": 0
+        }
+      ],
+      "team_message_delta": [
+        {
+          "words": 77,
+          "headings": 0
+        },
+        {
+          "words": 78,
+          "headings": 0
+        },
+        {
+          "words": 83,
+          "headings": 0
+        }
+      ],
+      "orchestrator_message_delta": [
+        {
+          "words": 139,
+          "headings": 0
+        }
+      ]
+    },
+    "team_failures": [],
+    "final_rpt": "safe_failure"
+  },
+  {
+    "scenario": "lemon_profitability",
+    "reviews": {
+      "subagent_message_delta": [
+        {
+          "words": 80,
+          "headings": 0
+        },
+        {
+          "words": 68,
+          "headings": 0
+        },
+        {
+          "words": 72,
+          "headings": 0
+        }
+      ],
+      "team_message_delta": [
+        {
+          "words": 81,
+          "headings": 0
+        }
+      ],
+      "orchestrator_message_delta": [
+        {
+          "words": 138,
+          "headings": 0
+        }
+      ]
+    },
+    "team_failures": [
+      {
+        "code": "team_task_failed",
+        "message": "The Team Task failed: dependency_error"
+      }
+    ],
+    "final_rpt": "safe_failure"
+  },
+  {
+    "scenario": "allulose_introduction",
+    "reviews": {
+      "subagent_message_delta": [
+        {
+          "words": 89,
+          "headings": 0
+        },
+        {
+          "words": 85,
+          "headings": 0
+        },
+        {
+          "words": 58,
+          "headings": 0
+        }
+      ],
+      "team_message_delta": [
+        {
+          "words": 81,
+          "headings": 0
+        }
+      ],
+      "orchestrator_message_delta": [
+        {
+          "words": 124,
+          "headings": 0
+        }
+      ]
+    },
+    "team_failures": [
+      {
+        "code": "team_task_failed",
+        "message": "The Team Task failed: dependency_error"
+      }
+    ],
+    "final_rpt": "safe_failure"
+  },
+  {
+    "scenario": "cost_center_change",
+    "reviews": {
+      "subagent_message_delta": [
+        {
+          "words": 54,
+          "headings": 0
+        },
+        {
+          "words": 54,
+          "headings": 0
+        },
+        {
+          "words": 63,
+          "headings": 0
+        }
+      ],
+      "team_message_delta": [
+        {
+          "words": 70,
+          "headings": 0
+        },
+        {
+          "words": 71,
+          "headings": 0
+        },
+        {
+          "words": 73,
+          "headings": 0
+        }
+      ],
+      "orchestrator_message_delta": [
+        {
+          "words": 112,
+          "headings": 0
+        }
+      ]
+    },
+    "team_failures": [],
+    "final_rpt": "safe_failure"
+  }
+]

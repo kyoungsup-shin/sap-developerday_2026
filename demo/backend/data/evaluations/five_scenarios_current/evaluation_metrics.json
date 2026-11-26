@@ -1,0 +1,280 @@
+{
+  "scenarios": [
+    {
+      "scenario": "strawberry_order",
+      "duration_seconds": 91.106,
+      "score": 100,
+      "scenario_passed": true,
+      "final_words": 127,
+      "tool_count": 6,
+      "same_task_duplicate_tool_executions": 0,
+      "tool_input_rejections": 0,
+      "grounding_searches": 0,
+      "team_failures": 0,
+      "team_handoffs": 3,
+      "final_rpt_success": false,
+      "security_check": {
+        "no_unredacted_secret_pattern": true
+      },
+      "artifact_source_progression": [
+        {
+          "handoff_id": "8f155679-7aa1-46e1-b38e-acdb145d6961",
+          "source_records": [
+            "DEMO-PR-101"
+          ],
+          "new_source_records": [
+            "DEMO-PR-101"
+          ]
+        },
+        {
+          "handoff_id": "641478b9-0f5c-4212-8d70-e6555628fd7c",
+          "source_records": [
+            "DEMO-PR-101",
+            "DEMO-ST-101"
+          ],
+          "new_source_records": [
+            "DEMO-ST-101"
+          ]
+        },
+        {
+          "handoff_id": "596387ab-1593-45b6-a922-06999513f0e3",
+          "source_records": [
+            "DEMO-PR-101",
+            "DEMO-ST-101"
+          ],
+          "new_source_records": []
+        }
+      ],
+      "intermediate_word_counts": {
+        "subagent_message_delta": [
+          59,
+          67,
+          61,
+          74,
+          69,
+          66
+        ],
+        "team_message_delta": [
+          77,
+          80,
+          73
+        ]
+      }
+    },
+    {
+      "scenario": "cip_seal_kit",
+      "duration_seconds": 85.708,
+      "score": 100,
+      "scenario_passed": true,
+      "final_words": 124,
+      "tool_count": 8,
+      "same_task_duplicate_tool_executions": 0,
+      "tool_input_rejections": 0,
+      "grounding_searches": 0,
+      "team_failures": 0,
+      "team_handoffs": 3,
+      "final_rpt_success": false,
+      "security_check": {
+        "no_unredacted_secret_pattern": true
+      },
+      "artifact_source_progression": [
+        {
+          "handoff_id": "9223b15c-3ef4-484b-a366-2111b99c0b97",
+          "source_records": [
+            "DEMO-PR-201",
+            "DEMO-ST-201"
+          ],
+          "new_source_records": [
+            "DEMO-PR-201",
+            "DEMO-ST-201"
+          ]
+        },
+        {
+          "handoff_id": "d0ede41f-3372-48ab-9ed5-cca7ffba9d49",
+          "source_records": [
+            "DEMO-EQ-201",
+            "DEMO-PE-201"
+          ],
+          "new_source_records": [
+            "DEMO-EQ-201",
+            "DEMO-PE-201"
+          ]
+        },
+        {
+          "handoff_id": "c72accb3-ba02-4e27-897e-24fb708a67c3",
+          "source_records": [
+            "DEMO-PR-201",
+            "DEMO-ST-201"
+          ],
+          "new_source_records": []
+        }
+      ],
+      "intermediate_word_counts": {
+        "subagent_message_delta": [
+          56,
+          60,
+          54,
+          56,
+          56,
+          59
+        ],
+        "team_message_delta": [
+          75,
+          73,
+          79
+        ]
+      }
+    },
+    {
+      "scenario": "lemon_profitability",
+      "duration_seconds": 70.569,
+      "score": 80,
+      "scenario_passed": false,
+      "final_words": 168,
+      "tool_count": 7,
+      "same_task_duplicate_tool_executions": 0,
+      "tool_input_rejections": 0,
+      "grounding_searches": 0,
+      "team_failures": 1,
+      "team_handoffs": 2,
+      "final_rpt_success": false,
+      "security_check": {
+        "no_unredacted_secret_pattern": true
+      },
+      "artifact_source_progression": [
+        {
+          "handoff_id": "9b04b833-e086-4ead-affe-643d78958714",
+          "source_records": [],
+          "new_source_records": []
+        }
+      ],
+      "intermediate_word_counts": {
+        "subagent_message_delta": [
+          83,
+          66,
+          93
+        ],
+        "team_message_delta": [
+          80
+        ]
+      }
+    },
+    {
+      "scenario": "allulose_introduction",
+      "duration_seconds": 62.207,
+      "score": 100,
+      "scenario_passed": true,
+      "final_words": 147,
+      "tool_count": 4,
+      "same_task_duplicate_tool_executions": 0,
+      "tool_input_rejections": 0,
+      "grounding_searches": 0,
+      "team_failures": 0,
+      "team_handoffs": 2,
+      "final_rpt_success": false,
+      "security_check": {
+        "no_unredacted_secret_pattern": true
+      },
+      "artifact_source_progression": [
+        {
+          "handoff_id": "2e5dfab6-b909-4926-82f4-ef6719d07f24",
+          "source_records": [
+            "DEMO-RD-401"
+          ],
+          "new_source_records": [
+            "DEMO-RD-401"
+          ]
+        },
+        {
+          "handoff_id": "e3db812e-f3d3-4836-bcf5-271cb5634a2e",
+          "source_records": [
+            "DEMO-MI-401",
+            "DEMO-PP-401",
+            "DEMO-ST-401"
+          ],
+          "new_source_records": [
+            "DEMO-MI-401",
+            "DEMO-PP-401",
+            "DEMO-ST-401"
+          ]
+        }
+      ],
+      "intermediate_word_counts": {
+        "subagent_message_delta": [
+          63,
+          63,
+          69,
+          96,
+          74
+        ],
+        "team_message_delta": [
+          72,
+          76
+        ]
+      }
+    },
+    {
+      "scenario": "cost_center_change",
+      "duration_seconds": 70.293,
+      "score": 100,
+      "scenario_passed": true,
+      "final_words": 111,
+      "tool_count": 4,
+      "same_task_duplicate_tool_executions": 0,
+      "tool_input_rejections": 0,
+      "grounding_searches": 0,
+      "team_failures": 0,
+      "team_handoffs": 3,
+      "final_rpt_success": false,
+      "security_check": {
+        "no_unredacted_secret_pattern": true
+      },
+      "artifact_source_progression": [
+        {
+          "handoff_id": "0da38998-ed11-42a8-87ba-3f4198c194f6",
+          "source_records": [
+            "DEMO-FC-501"
+          ],
+          "new_source_records": [
+            "DEMO-FC-501"
+          ]
+        },
+        {
+          "handoff_id": "42b95732-6c5d-42c0-b402-1e22a157c88c",
+          "source_records": [
+            "DEMO-IT-501"
+          ],
+          "new_source_records": [
+            "DEMO-IT-501"
+          ]
+        },
+        {
+          "handoff_id": "b627de75-14a9-454e-bde1-f3270bc6b03a",
+          "source_records": [
+            "DEMO-FC-501"
+          ],
+          "new_source_records": []
+        }
+      ],
+      "intermediate_word_counts": {
+        "subagent_message_delta": [
+          94,
+          63,
+          64,
+          68
+        ],
+        "team_message_delta": [
+          70,
+          72,
+          68
+        ]
+      }
+    }
+  ],
+  "rpt_diagnostic": {
+    "english_task_state": "completed",
+    "rpt_http_status": 404,
+    "rpt_key_present": true,
+    "local_config_valid": true
+  }
+}

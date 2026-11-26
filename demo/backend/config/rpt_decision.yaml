@@ -1,0 +1,62 @@
+next_agent:
+  instructions: Select the first F&B Team Assistant that should perform a read-only review of the unresolved fact. Choose exactly one listed Team ID. This is a recommendation for the Orchestrator, not an authorization to perform a write action.
+  criteria:
+    fb-facilities-team: Equipment identity, maintenance, mechanical constraints, asset condition, or operating impact.
+    fb-procurement-team: Procurement, supplier, purchase request, inventory, supply availability, lead time, or sourcing options.
+    manufacturing-planning-team: Production plan, material requirement, BOM readiness, or production-input preparation.
+    finance-business-planning-team: Budget, cost, profitability, cost center, financial control, or business-plan impact.
+    it-team: ERP, MDM, data mapping, system integration, or controlled IT change readiness.
+    ehs-team: Safety, environment, chemicals, permit, regulatory exposure, or unsafe operating condition.
+    hr-team: Workforce, shift coverage, attendance, training, qualification, or personnel capability.
+    general-affairs-team: Site services, facilities support, access control, security, office asset, or workplace operations.
+    process-engineering-team: Process parameters, yield, process validation, or process-change technical evidence.
+    rnd-team: Product, formulation, raw-material development, technical feasibility, experiment, or scale-up.
+    production-team: Line operation, batch or lot execution, manufacturing traceability, or live production impact.
+    quality-team: Quality assurance, inspection, specification, deviation, release status, or quality-system evidence.
+
+handoff_mode:
+  instructions: Decide whether the recommended Team can start a read-only investigation now.
+  criteria:
+    delegate_now: The purpose and minimum identifier or context are sufficient for a read-only review.
+    request_evidence: A material identifier, asset, lot, supplier, location, date, or other operational fact is missing.
+    request_human_approval: An authorized decision is required for an irreversible budget, contract, policy, or safety exception.
+
+risk:
+  instructions: Assess the likely operational impact from the current evidence.
+  criteria:
+    low: A bounded inquiry or routine planning task without an immediate operational interruption.
+    medium: A schedule, cost, quality, or operating-plan impact needs review while business continuity remains intact.
+    high: Production stoppage, safety exposure, critical supply disruption, quality-release risk, or contract breach is imminent.
+
+priority:
+  instructions: Score urgency as 0 can wait, 1 this week, or 2 today.
+  criteria:
+    - "0: Normal cadence; no immediate business impact."
+    - "1: Resolve this week to prevent a growing schedule, cost, quality, or delivery impact."
+    - "2: Action is needed today to prevent an imminent operational stop, safety issue, release blocker, or critical disruption."
+
+examples:
+  - state: "CIP pump P-01 has an abnormal vibration. Confirm the mechanical seal condition before the next production run."
+    answers: {next_agent: fb-facilities-team, handoff_mode: delegate_now, risk: medium, priority: "1"}
+  - state: "The mechanical seal kit for CIP pump P-01 is needed today. Compare stock and supplier lead time before the line stops."
+    answers: {next_agent: fb-procurement-team, handoff_mode: delegate_now, risk: high, priority: "2"}
+  - state: "Next week's production plan needs material readiness review, but the BOM revision is not identified."
+    answers: {next_agent: manufacturing-planning-team, handoff_mode: request_evidence, risk: medium, priority: "1"}
+  - state: "An emergency purchase exceeds the approved cost-center budget and needs an authorized decision."
+    answers: {next_agent: finance-business-planning-team, handoff_mode: request_human_approval, risk: medium, priority: "1"}
+  - state: "A new ERP material master field must be mapped before the approved process change can be released."
+    answers: {next_agent: it-team, handoff_mode: delegate_now, risk: medium, priority: "1"}
+  - state: "A solvent handling procedure is missing from an urgent maintenance task. Confirm safety and permit requirements before work begins."
+    answers: {next_agent: ehs-team, handoff_mode: delegate_now, risk: high, priority: "2"}
+  - state: "The night shift needs a qualified operator, but available employee and qualification records are missing."
+    answers: {next_agent: hr-team, handoff_mode: request_evidence, risk: medium, priority: "1"}
+  - state: "A contractor needs temporary clean-room access tomorrow. Review access and site-security requirements."
+    answers: {next_agent: general-affairs-team, handoff_mode: delegate_now, risk: low, priority: "0"}
+  - state: "Yield dropped after a temperature adjustment. Review process conditions and validation evidence."
+    answers: {next_agent: process-engineering-team, handoff_mode: delegate_now, risk: medium, priority: "1"}
+  - state: "A new beverage formulation needs raw-material compatibility and scale-up feasibility review."
+    answers: {next_agent: rnd-team, handoff_mode: delegate_now, risk: medium, priority: "1"}
+  - state: "Line 2 stopped during batch B-204. Check the execution record and lot traceability for an immediate restart review."
+    answers: {next_agent: production-team, handoff_mode: delegate_now, risk: high, priority: "2"}
+  - state: "Batch B-204 cannot be released because the final microbiological inspection result is not available."
+    answers: {next_agent: quality-team, handoff_mode: request_evidence, risk: high, priority: "2"}

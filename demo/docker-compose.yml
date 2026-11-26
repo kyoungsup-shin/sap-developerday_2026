@@ -1,0 +1,60 @@
+name: a2a-demo
+
+services:
+  team-server:
+    build:
+      context: ./backend
+    env_file:
+      - ../.env
+    environment:
+      ALLOW_WRITE_TOOLS: "false"
+      DEMO_TEAM_HOST: 0.0.0.0
+      DEMO_TEAM_PORT: "8091"
+      DEMO_TEAM_BASE_URL: http://team-server:8091
+    command: ["python", "-m", "gateway.team_server"]
+    expose:
+      - "8091"
+    volumes:
+      - harness-state:/app/demo/backend/data/harness_state:ro
+    healthcheck:
+      test: ["CMD", "python", "-c", "from urllib.request import urlopen; urlopen('http://127.0.0.1:8091/healthz', timeout=3)"]
+      interval: 15s
+      timeout: 5s
+      start_period: 15s
+      retries: 3
+    restart: unless-stopped
+
+  gateway:
+    build:
+      context: ./backend
+    env_file:
+      - ../.env
+    environment:
+      ALLOW_WRITE_TOOLS: "false"
+      DJANGO_DEBUG: "false"
+      DJANGO_ALLOWED_HOSTS: localhost,127.0.0.1,gateway
+      CORS_ORIGIN: http://localhost:5173
+      DEMO_TEAM_BASE_URL: http://team-server:8091
+    depends_on:
+      team-server:
+        condition: service_healthy
+    expose:
+      - "8080"
+    volumes:
+      - harness-state:/app/demo/backend/data/harness_state
+      - harness-evaluations:/app/demo/backend/data/evaluations
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+    depends_on:
+      gateway:
+        condition: service_healthy
+    ports:
+      - "5173:80"
+    restart: unless-stopped
+
+volumes:
+  harness-state:
+  harness-evaluations:

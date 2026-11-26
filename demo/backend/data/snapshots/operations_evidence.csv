@@ -1,0 +1,29 @@
+CONTEXT_ID,DOMAIN,RECORD_ID,STATUS,DETAIL,QUANTITY,UNIT,SOURCE
+CTX-RM-STRAWBERRY,procurement,DEMO-PR-101,draft,Qualified supplier quotation at USD 4.80 per kg valid through next month,800,kg,Demo purchasing sample
+CTX-RM-STRAWBERRY,supply,DEMO-ST-101,available,Available stock 420 kg against planned requirement 1200 kg; replenishment gap 780 kg,420,kg,Demo inventory sample
+CTX-RM-STRAWBERRY,material_intake,DEMO-MI-101,released,Approved existing raw material; incoming lot inspection required,1200,kg,Demo material sample
+CTX-RM-STRAWBERRY,production_planning,DEMO-PP-101,planned,Next beverage campaign requires 1200 kg; delivery date confirmation pending,1200,kg,Demo planning sample
+CTX-RM-STRAWBERRY,financial_control,DEMO-FC-101,pending,Replenishment estimate USD 3744 for 780 kg; approval above USD 3000 required,3744,USD,Demo finance sample
+CTX-EQP-CIP-SEAL,facility,DEMO-EQ-201,confirmed,EQ-CIP-01 uses seal assembly SEAL-28; compatible replacement kit KIT-CIP-28,1,kit,Demo equipment sample
+CTX-EQP-CIP-SEAL,procurement,DEMO-PR-201,quoted,Qualified vendor quote USD 640 for KIT-CIP-28; lead time 6 business days,640,USD,Demo purchasing sample
+CTX-EQP-CIP-SEAL,supply,DEMO-ST-201,out_of_stock,No compatible spare kit in store; one kit is required,0,kit,Demo inventory sample
+CTX-EQP-CIP-SEAL,financial_control,DEMO-FC-201,pending,Maintenance budget USD 2000 remains; supervisor release required,2000,USD,Demo finance sample
+CTX-EQP-CIP-SEAL,production_execution,DEMO-PE-201,scheduled,CIP pump can be isolated during Sunday cleaning window,1,window,Demo execution sample
+CTX-EQP-CIP-SEAL,quality,DEMO-QA-201,pending,Post-repair leak check and sanitation verification required,1,check,Demo quality sample
+CTX-PROD-LEMON,cost_driver,DEMO-CD-301,documented,Next-quarter basis: USD 1.65 selling price; 240000 units; imported ingredient EUR 0.32 per unit; local variable USD 0.58; fixed USD 72000,240000,unit,Demo product costing sample
+CTX-PROD-LEMON,business_outlook,DEMO-BO-301,forecast,Base FX 1.08 USD per EUR; stress FX 1.16; imported raw material price increase 12 percent,12,percent,Demo forecast sample
+CTX-PROD-LEMON,financial_control,DEMO-FC-301,review,Use documented product-cost assumptions and scenario calculations; no budget posting authorized,72000,USD,Demo finance sample
+CTX-PROD-LEMON,production_planning,DEMO-PP-301,planned,Quarterly forecast is 240000 beverage units,240000,unit,Demo planning sample
+CTX-RM-ALLULOSE,material_intake,DEMO-MI-401,pending,Trial material only; material master and production release remain unapproved,30,kg,Demo material sample
+CTX-RM-ALLULOSE,supply,DEMO-ST-401,trial_only,30 kg sample stock; commercial replenishment lead time 21 days,30,kg,Demo inventory sample
+CTX-RM-ALLULOSE,procurement,DEMO-PR-401,pending,Supplier qualification and commercial quotation required before ordering,21,day,Demo purchasing sample
+CTX-RM-ALLULOSE,rnd,DEMO-RD-401,trial,Formulation trial planned; sensory stability and label review not complete,1,trial,Demo development sample
+CTX-RM-ALLULOSE,quality,DEMO-QA-401,pending,Specification and production release require QA approval,1,review,Demo quality sample
+CTX-RM-ALLULOSE,production_planning,DEMO-PP-401,blocked,Do not allocate allulose to commercial production until approved,0,batch,Demo planning sample
+CTX-RM-ALLULOSE,erp_readiness,DEMO-IT-401,pending,Material master and BOM proposal still require validation,1,proposal,Demo ERP sample
+CTX-RM-ALLULOSE,ehs,DEMO-EH-401,pending,Handling instruction review required for trial introduction,1,review,Demo EHS sample
+CTX-RM-ALLULOSE,process,DEMO-PC-401,trial,Mixing parameters require a controlled trial,1,trial,Demo process sample
+CTX-LINE-BEV1,financial_control,DEMO-FC-501,proposed,Current cost center CC-BEV-100; proposed CC-BEV-210 next quarter; controller approval and effective-date validation pending,1,proposal,Demo finance sample
+CTX-LINE-BEV1,erp_readiness,DEMO-IT-501,proposed,Change ticket DEMO-CHG-501 is draft; allocation mapping and regression checks required,1,ticket,Demo ERP sample
+CTX-LINE-BEV1,production_planning,DEMO-PP-501,review,Production plan remains assigned to CC-BEV-100 until approved effective date,1,line,Demo planning sample
+CTX-LINE-BEV1,production_execution,DEMO-PE-501,unchanged,No production-line master data change has been applied,1,line,Demo execution sample

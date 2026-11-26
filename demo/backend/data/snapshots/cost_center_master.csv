@@ -1,0 +1,3 @@
+CONTEXT_ID,COST_CENTER,DESCRIPTION,STATUS
+CTX-LINE-BEV1,CC-BEV-100,Beverage Line 1 current allocation,active
+CTX-LINE-BEV1,CC-BEV-210,Proposed next-quarter allocation,pending approval

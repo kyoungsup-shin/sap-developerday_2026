@@ -1,0 +1,441 @@
+# Default F&B Harness configuration. Restart Gateway and Team server after edits.
+id: fnb-default
+schema_version: demo.harness.v1
+agents:
+- agent_id: fb-facilities-team
+  agent_label: F&B Facilities Team
+  skill_id: facility_incident_and_recovery
+  description: Reviews equipment identifiers, field observations, technical constraints, and operational impact.
+  sub_agents:
+  - Field Operations Specialist
+  - Facilities Engineering Specialist
+  tags:
+  - a2a
+  - fnb
+  - read-only
+  keywords:
+  - facility
+  - pump
+  - failure
+  - maintenance
+  examples:
+  - Analyze a production equipment issue.
+- agent_id: fb-procurement-team
+  agent_label: F&B Procurement Team
+  skill_id: procurement_and_supply_review
+  description: Reviews procurement, inventory, and supply options in read-only mode.
+  sub_agents:
+  - Procurement Specialist
+  - Inventory and Supply Specialist
+  tags:
+  - a2a
+  - fnb
+  - read-only
+  keywords:
+  - procurement
+  - supply
+  - inventory
+  - purchase order
+  examples:
+  - Review material sourcing options.
+- agent_id: manufacturing-planning-team
+  agent_label: Manufacturing Planning Team
+  skill_id: production_and_material_readiness
+  description: Reviews production planning, material requirements, and production readiness.
+  sub_agents:
+  - Production Planning Specialist
+  - Material Readiness Specialist
+  - Production Intake Specialist
+  tags:
+  - a2a
+  - fnb
+  - read-only
+  keywords:
+  - production plan
+  - material
+  - BOM
+  examples:
+  - Review production readiness.
+- agent_id: finance-business-planning-team
+  agent_label: Finance and Business Planning Team
+  skill_id: financial_control_and_enterprise_planning
+  description: Reviews cost, budget, and cost-center decision evidence.
+  sub_agents:
+  - Profitability and Cost Specialist
+  - Budget and Management Accounting Specialist
+  tags:
+  - a2a
+  - fnb
+  - read-only
+  keywords:
+  - budget
+  - cost
+  - profitability
+  - cost center
+  examples:
+  - Review the financial and budget impact.
+- agent_id: it-team
+  agent_label: IT Team
+  skill_id: erp_change_readiness
+  description: Reviews ERP data mapping and change-readiness requirements.
+  sub_agents:
+  - ERP and MDM Data Specialist
+  - IT Change Management Specialist
+  tags:
+  - a2a
+  - fnb
+  - read-only
+  keywords:
+  - ERP
+  - MDM
+  - data
+  - system change
+  examples:
+  - Review ERP change readiness.
+- agent_id: ehs-team
+  agent_label: EHS Team
+  skill_id: safety_environment_and_permit_review
+  description: Reviews safety, environmental, chemical, and work-permit evidence.
+  sub_agents:
+  - Occupational Safety Specialist
+  - Environmental Management Specialist
+  - Work Permit Specialist
+  tags:
+  - a2a
+  - fnb
+  - read-only
+  keywords:
+  - safety
+  - environment
+  - risk
+  - permit
+  examples:
+  - Check whether a safety review is required.
+- agent_id: hr-team
+  agent_label: Human Resources Team
+  skill_id: workforce_and_qualification_review
+  description: Reviews workforce operations, training, qualification, and attendance evidence.
+  sub_agents:
+  - Workforce Operations Specialist
+  - Training and Qualification Specialist
+  tags:
+  - a2a
+  - fnb
+  - read-only
+  keywords:
+  - workforce
+  - training
+  - qualification
+  - attendance
+  examples:
+  - Review training and qualification status.
+- agent_id: general-affairs-team
+  agent_label: General Affairs Team
+  skill_id: site_services_and_asset_support
+  description: Reviews site services, assets, access, and security evidence.
+  sub_agents:
+  - Site Services Specialist
+  - Access and Security Specialist
+  tags:
+  - a2a
+  - fnb
+  - read-only
+  keywords:
+  - access
+  - security
+  - asset
+  - supplies
+  examples:
+  - Review site access readiness.
+- agent_id: process-engineering-team
+  agent_label: Process Engineering Team
+  skill_id: process_engineering_and_validation
+  description: Reviews process conditions, yield, and process-change validation evidence.
+  sub_agents:
+  - Process Technology Specialist
+  - Process Improvement and Yield Specialist
+  tags:
+  - a2a
+  - fnb
+  - read-only
+  keywords:
+  - process
+  - yield
+  - validation
+  examples:
+  - Review a process-condition change.
+- agent_id: rnd-team
+  agent_label: R&D Team
+  skill_id: product_development_and_scaleup
+  description: Reviews product and ingredient development and scale-up readiness evidence.
+  sub_agents:
+  - Product and Formulation Specialist
+  - Scale-up Specialist
+  tags:
+  - a2a
+  - fnb
+  - read-only
+  keywords:
+  - development
+  - ingredient
+  - formulation
+  - scale-up
+  examples:
+  - Review new ingredient development.
+- agent_id: production-team
+  agent_label: Production Team
+  skill_id: production_execution_and_traceability
+  description: Reviews production execution, line operations, and lot traceability evidence.
+  sub_agents:
+  - Production Operations Specialist
+  - Line Operations Specialist
+  tags:
+  - a2a
+  - fnb
+  - read-only
+  keywords:
+  - line
+  - lot
+  - production
+  - batch
+  examples:
+  - Review the operational impact on a production line.
+- agent_id: quality-team
+  agent_label: Quality Team
+  skill_id: quality_assurance_control_and_release
+  description: Reviews quality systems, inspection, and release evidence.
+  sub_agents:
+  - Quality Assurance Specialist
+  - Quality Control Specialist
+  tags:
+  - a2a
+  - fnb
+  - read-only
+  keywords:
+  - quality
+  - inspection
+  - release
+  - specification
+  examples:
+  - Review quality-verification status.
+specialists:
+- name: Field Operations Specialist
+  domains:
+  - facility
+  - production_execution
+  tools:
+  - search_business_context
+  - retrieve_business_evidence
+- name: Facilities Engineering Specialist
+  domains:
+  - facility
+  tools:
+  - search_business_context
+  - retrieve_business_evidence
+- name: Procurement Specialist
+  domains:
+  - procurement
+  tools:
+  - search_business_context
+  - retrieve_business_evidence
+- name: Inventory and Supply Specialist
+  domains:
+  - supply
+  tools:
+  - search_business_context
+  - retrieve_business_evidence
+- name: Production Planning Specialist
+  domains:
+  - production_planning
+  tools:
+  - search_business_context
+  - retrieve_business_evidence
+- name: Material Readiness Specialist
+  domains:
+  - material_intake
+  - supply
+  tools:
+  - search_business_context
+  - retrieve_business_evidence
+- name: Production Intake Specialist
+  domains:
+  - material_intake
+  - production_planning
+  tools:
+  - search_business_context
+  - retrieve_business_evidence
+- name: Profitability and Cost Specialist
+  domains:
+  - cost_driver
+  - business_outlook
+  tools:
+  - search_business_context
+  - retrieve_business_evidence
+  - calculate_profitability_scenarios
+- name: Budget and Management Accounting Specialist
+  domains:
+  - financial_control
+  tools:
+  - search_business_context
+  - retrieve_business_evidence
+- name: ERP and MDM Data Specialist
+  domains:
+  - erp_readiness
+  tools:
+  - search_business_context
+  - retrieve_business_evidence
+- name: IT Change Management Specialist
+  domains:
+  - erp_readiness
+  tools:
+  - search_business_context
+  - retrieve_business_evidence
+- name: Occupational Safety Specialist
+  domains:
+  - ehs
+  tools:
+  - search_business_context
+  - retrieve_business_evidence
+- name: Environmental Management Specialist
+  domains:
+  - ehs
+  tools:
+  - search_business_context
+  - retrieve_business_evidence
+- name: Work Permit Specialist
+  domains:
+  - ehs
+  tools:
+  - search_business_context
+  - retrieve_business_evidence
+- name: Workforce Operations Specialist
+  domains:
+  - workforce
+  tools:
+  - search_business_context
+  - retrieve_business_evidence
+- name: Training and Qualification Specialist
+  domains:
+  - workforce
+  tools:
+  - search_business_context
+  - retrieve_business_evidence
+- name: Site Services Specialist
+  domains:
+  - general_affairs
+  tools:
+  - search_business_context
+  - retrieve_business_evidence
+- name: Access and Security Specialist
+  domains:
+  - general_affairs
+  tools:
+  - search_business_context
+  - retrieve_business_evidence
+- name: Process Technology Specialist
+  domains:
+  - process
+  tools:
+  - search_business_context
+  - retrieve_business_evidence
+- name: Process Improvement and Yield Specialist
+  domains:
+  - process
+  tools:
+  - search_business_context
+  - retrieve_business_evidence
+- name: Product and Formulation Specialist
+  domains:
+  - rnd
+  tools:
+  - search_business_context
+  - retrieve_business_evidence
+- name: Scale-up Specialist
+  domains:
+  - rnd
+  - process
+  tools:
+  - search_business_context
+  - retrieve_business_evidence
+- name: Production Operations Specialist
+  domains:
+  - production_execution
+  tools:
+  - search_business_context
+  - retrieve_business_evidence
+- name: Line Operations Specialist
+  domains:
+  - production_execution
+  tools:
+  - search_business_context
+  - retrieve_business_evidence
+- name: Quality Assurance Specialist
+  domains:
+  - quality
+  tools:
+  - search_business_context
+  - retrieve_business_evidence
+- name: Quality Control Specialist
+  domains:
+  - quality
+  tools:
+  - search_business_context
+  - retrieve_business_evidence
+tools:
+- name: search_business_context
+  description: Finds a follow-up Context from product, material, production-line, equipment, or alias text in the
+    request.
+  required_parameter: request_text
+  inputs:
+  - name: request_text
+    type: string
+    required: true
+    description: The original operational request or a product, material, or equipment identifier.
+    example: CIP pump mechanical seal kit purchasing review
+- name: retrieve_business_evidence
+  description: Reads a CSV evidence bundle for domains authorized to the Specialist. Domain selection is enforced
+    by server policy.
+  required_parameter: context_id
+  inputs:
+  - name: context_id
+    type: string
+    required: true
+    description: A Context ID returned by search_business_context or confirmed by a prior Artifact.
+    example: CTX-EQP-CIP-SEAL
+  policy_note: Domains are not caller inputs. The server applies them from the executing Specialist allow-list.
+- name: calculate_profitability_scenarios
+  description: Calculates unit cost, break-even volume, and quarterly profit for base and stress scenarios from
+    product cost, volume, and exchange-rate sample records.
+  required_parameter: context_id
+  inputs:
+  - name: context_id
+    type: string
+    required: true
+    description: A Context ID linked to cost, demand, and BOM evidence.
+    example: CTX-RM-STRAWBERRY
+  policy_note: This Tool is callable only by the Profitability and Cost Specialist.
+runtime:
+  max_handoffs: 3
+  max_tool_turns: 3
+  timeouts:
+    team_task: 240
+    a2a_connect: 8
+    ai_core_connect: 30
+    ai_core_discovery: 90
+    ai_core_completion: 120
+    ai_core_stream: 180
+    grounding_discovery: 60
+    grounding_documents: 30
+    rpt_request: 60
+    joule_cli: 60
+resources:
+  prompts:
+  - gateway/prompts/roles.toml
+  - gateway/prompts/runtime.toml
+  snapshots: data/snapshots
+  required_snapshots:
+  - business_context.csv
+  - cost_center_master.csv
+  - operations_evidence.csv
+  - product_cost_assumption.csv
+  rpt_config: config/rpt_decision.yaml

@@ -1,0 +1,9 @@
+# Generated live-recording assets and diagnostics remain local.
+attempts/
+latest-run.json
+latest-run-v2.json
+latest-full-conversation.json
+latest-streaming.json
+latest-realtime.json
+*.webm
+*.mp4

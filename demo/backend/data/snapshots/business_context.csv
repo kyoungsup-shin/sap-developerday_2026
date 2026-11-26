@@ -1,0 +1,6 @@
+CONTEXT_ID,NAME,ALIASES,ENTITY_TYPE,ENTITY_ID
+CTX-RM-STRAWBERRY,Strawberry concentrate,strawberry concentrate|strawberry|strawberry raw material,MATERIAL,MAT-STRAW-01
+CTX-EQP-CIP-SEAL,CIP pump mechanical seal kit,CIP|CIP pump|mechanical seal|seal kit,EQUIPMENT,EQ-CIP-01
+CTX-PROD-LEMON,Lemon carbonated beverage,lemon soda|lemon carbonated beverages|lemon beverage|lemon,PRODUCT,PROD-LEMON-01
+CTX-RM-ALLULOSE,Allulose sweetener,allulose|allulose sweetener|new sweetener,MATERIAL,MAT-ALLU-01
+CTX-LINE-BEV1,Beverage Line 1,beverage line 1|beverage 1|cost center|production-line cost center,LINE,LINE-BEV-01

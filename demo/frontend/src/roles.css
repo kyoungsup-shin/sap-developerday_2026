@@ -1,0 +1,2 @@
+/* Speaker colors are intentionally restrained so the execution trace remains readable. */
+.message:has(.message-meta){isolation:isolate}

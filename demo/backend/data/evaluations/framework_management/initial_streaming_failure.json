@@ -1,0 +1,809 @@
+{
+  "id": "ae264533ec9d466ea1132cf7f4fed0b1",
+  "state": "completed",
+  "revision": 36,
+  "started_at": 1795484500.5141482,
+  "scenario_count": 5,
+  "finished_at": 1795484651.0739946,
+  "report": {
+    "generated_at_epoch": 1795484650.9897075,
+    "base_url": "http://127.0.0.1:8080",
+    "settings_revision": 36,
+    "replayed_from": null,
+    "scenarios": [
+      {
+        "id": "strawberry_order",
+        "title": "Additional order for existing raw materials",
+        "request": "Please place an additional order for strawberry concentrate.",
+        "score": 0,
+        "passed": false,
+        "categories": {
+          "tool_a2a": [
+            {
+              "name": "LLM Tool contracts are executable",
+              "passed": false,
+              "evidence": "No valid Tool observation.",
+              "weight": 10.0
+            },
+            {
+              "name": "Tool Context IDs originate from resolution",
+              "passed": false,
+              "evidence": "Resolved=[]; used=[]",
+              "weight": 10.0
+            },
+            {
+              "name": "At least one read-only Tool observation was produced",
+              "passed": false,
+              "evidence": "Tools=[]",
+              "weight": 10.0
+            }
+          ],
+          "grounding_context": [
+            {
+              "name": "Required source-bound SOP Grounding precedes the business review",
+              "passed": false,
+              "evidence": "Grounding searches=0; completed=0",
+              "weight": 10.0
+            },
+            {
+              "name": "Source-bound business context reached collaboration",
+              "passed": false,
+              "evidence": "Resolved=[]; artifacts=0; source_bound=True",
+              "weight": 10.0
+            }
+          ],
+          "agent_collaboration": [
+            {
+              "name": "Delegation completed",
+              "passed": false,
+              "evidence": "Delegations=0; artifacts=0",
+              "weight": 10.0
+            },
+            {
+              "name": "Controlled handoff sequence completed",
+              "passed": false,
+              "evidence": "Required=('grounding_started', 'grounding_completed', 'rpt_decision_failed', 'team_handoff_started', 'delegation_selected', 'artifact_received', 'orchestrator_message_delta', 'rpt_final_decision_failed', 'complete'); termination=None; errors=[]",
+              "weight": 10.0
+            }
+          ],
+          "chat_quality": [
+            {
+              "name": "Final Chat answer is present",
+              "passed": false,
+              "evidence": "No final answer event.",
+              "weight": 10.0
+            },
+            {
+              "name": "Generated Chat answers are English",
+              "passed": false,
+              "evidence": "Missing final answer or Hangul detected.",
+              "weight": 10.0
+            }
+          ],
+          "rpt_completion": [
+            {
+              "name": "Initial RPT lifecycle completed",
+              "passed": false,
+              "evidence": "Initial RPT lifecycle event present.",
+              "weight": 5.0
+            },
+            {
+              "name": "Final RPT lifecycle and completion are present",
+              "passed": false,
+              "evidence": "Final RPT=False; complete=False",
+              "weight": 5.0
+            }
+          ]
+        },
+        "scenario_checks": [
+          {
+            "name": "Verified SOP context reaches every Team handoff",
+            "passed": false,
+            "evidence": "Team handoffs=0; SOP context characters=0",
+            "weight": 0
+          },
+          {
+            "name": "Final Chat cites a verified SOP source",
+            "passed": false,
+            "evidence": "Verified SOP IDs=[]",
+            "weight": 0
+          },
+          {
+            "name": "Procurement or supply evidence supports the order review",
+            "passed": false,
+            "evidence": "Domains=[]",
+            "weight": 0
+          },
+          {
+            "name": "Configured required Tools executed",
+            "passed": true,
+            "evidence": "[]",
+            "weight": 0
+          },
+          {
+            "name": "Configured Context IDs resolved",
+            "passed": true,
+            "evidence": "[]",
+            "weight": 0
+          },
+          {
+            "name": "Configured answer evidence is present",
+            "passed": true,
+            "evidence": "",
+            "weight": 0
+          }
+        ],
+        "events": {
+          "count": 0,
+          "types": [],
+          "duration_seconds": 0.0
+        },
+        "sse_trace": [],
+        "tool_trace": [],
+        "final_chat_answer": "",
+        "final_rpt": null,
+        "rpt_status": {
+          "initial": {
+            "event": "missing",
+            "provider": null,
+            "reason": null
+          },
+          "final": {
+            "event": "missing",
+            "provider": null,
+            "reason": null
+          }
+        },
+        "agent_trace": [],
+        "joule": {
+          "configured": false,
+          "events": [],
+          "status": "not_configured",
+          "reason": "Joule target settings are absent."
+        },
+        "security": {
+          "no_unredacted_secret_pattern": true
+        },
+        "evidence_origin": "live_run",
+        "transport_error": "HTTPConnectionPool(host='127.0.0.1', port=8080): Read timed out."
+      },
+      {
+        "id": "cip_seal_kit",
+        "title": "Replenishment purchase for existing equipment consumables",
+        "request": "Please purchase a CIP pump mechanical seal kit.",
+        "score": 0,
+        "passed": false,
+        "categories": {
+          "tool_a2a": [
+            {
+              "name": "LLM Tool contracts are executable",
+              "passed": false,
+              "evidence": "No valid Tool observation.",
+              "weight": 10.0
+            },
+            {
+              "name": "Tool Context IDs originate from resolution",
+              "passed": false,
+              "evidence": "Resolved=[]; used=[]",
+              "weight": 10.0
+            },
+            {
+              "name": "At least one read-only Tool observation was produced",
+              "passed": false,
+              "evidence": "Tools=[]",
+              "weight": 10.0
+            }
+          ],
+          "grounding_context": [
+            {
+              "name": "Required source-bound SOP Grounding precedes the business review",
+              "passed": false,
+              "evidence": "Grounding searches=0; completed=0",
+              "weight": 10.0
+            },
+            {
+              "name": "Source-bound business context reached collaboration",
+              "passed": false,
+              "evidence": "Resolved=[]; artifacts=0; source_bound=True",
+              "weight": 10.0
+            }
+          ],
+          "agent_collaboration": [
+            {
+              "name": "Delegation completed",
+              "passed": false,
+              "evidence": "Delegations=0; artifacts=0",
+              "weight": 10.0
+            },
+            {
+              "name": "Controlled handoff sequence completed",
+              "passed": false,
+              "evidence": "Required=('grounding_started', 'grounding_completed', 'rpt_decision_failed', 'team_handoff_started', 'delegation_selected', 'artifact_received', 'orchestrator_message_delta', 'rpt_final_decision_failed', 'complete'); termination=None; errors=[]",
+              "weight": 10.0
+            }
+          ],
+          "chat_quality": [
+            {
+              "name": "Final Chat answer is present",
+              "passed": false,
+              "evidence": "No final answer event.",
+              "weight": 10.0
+            },
+            {
+              "name": "Generated Chat answers are English",
+              "passed": false,
+              "evidence": "Missing final answer or Hangul detected.",
+              "weight": 10.0
+            }
+          ],
+          "rpt_completion": [
+            {
+              "name": "Initial RPT lifecycle completed",
+              "passed": false,
+              "evidence": "Initial RPT lifecycle event present.",
+              "weight": 5.0
+            },
+            {
+              "name": "Final RPT lifecycle and completion are present",
+              "passed": false,
+              "evidence": "Final RPT=False; complete=False",
+              "weight": 5.0
+            }
+          ]
+        },
+        "scenario_checks": [
+          {
+            "name": "Verified SOP context reaches every Team handoff",
+            "passed": false,
+            "evidence": "Team handoffs=0; SOP context characters=0",
+            "weight": 0
+          },
+          {
+            "name": "Final Chat cites a verified SOP source",
+            "passed": false,
+            "evidence": "Verified SOP IDs=[]",
+            "weight": 0
+          },
+          {
+            "name": "Facility and purchase-readiness evidence support the equipment review",
+            "passed": false,
+            "evidence": "Domains=[]",
+            "weight": 0
+          },
+          {
+            "name": "Configured required Tools executed",
+            "passed": true,
+            "evidence": "[]",
+            "weight": 0
+          },
+          {
+            "name": "Configured Context IDs resolved",
+            "passed": true,
+            "evidence": "[]",
+            "weight": 0
+          },
+          {
+            "name": "Configured answer evidence is present",
+            "passed": true,
+            "evidence": "",
+            "weight": 0
+          }
+        ],
+        "events": {
+          "count": 0,
+          "types": [],
+          "duration_seconds": 0.0
+        },
+        "sse_trace": [],
+        "tool_trace": [],
+        "final_chat_answer": "",
+        "final_rpt": null,
+        "rpt_status": {
+          "initial": {
+            "event": "missing",
+            "provider": null,
+            "reason": null
+          },
+          "final": {
+            "event": "missing",
+            "provider": null,
+            "reason": null
+          }
+        },
+        "agent_trace": [],
+        "joule": {
+          "configured": false,
+          "events": [],
+          "status": "not_configured",
+          "reason": "Joule target settings are absent."
+        },
+        "security": {
+          "no_unredacted_secret_pattern": true
+        },
+        "evidence_origin": "live_run",
+        "transport_error": "HTTPConnectionPool(host='127.0.0.1', port=8080): Read timed out."
+      },
+      {
+        "id": "lemon_profitability",
+        "title": "Business impact assessment for exchange-rate and raw-material price changes",
+        "request": "Please review how recent exchange-rate and raw-material price changes could affect the profitability of lemon carbonated beverages next quarter.",
+        "score": 0,
+        "passed": false,
+        "categories": {
+          "tool_a2a": [
+            {
+              "name": "LLM Tool contracts are executable",
+              "passed": false,
+              "evidence": "Profitability calculation is missing after resolvable product context.",
+              "weight": 10.0
+            },
+            {
+              "name": "Tool Context IDs originate from resolution",
+              "passed": false,
+              "evidence": "Profitability calculation is missing after resolvable product context.",
+              "weight": 10.0
+            },
+            {
+              "name": "At least one read-only Tool observation was produced",
+              "passed": false,
+              "evidence": "Profitability calculation is missing after resolvable product context.",
+              "weight": 10.0
+            }
+          ],
+          "grounding_context": [
+            {
+              "name": "Required source-bound SOP Grounding precedes the business review",
+              "passed": false,
+              "evidence": "Grounding searches=0; completed=0",
+              "weight": 10.0
+            },
+            {
+              "name": "Source-bound business context reached collaboration",
+              "passed": false,
+              "evidence": "Resolved=[]; artifacts=0; source_bound=True",
+              "weight": 10.0
+            }
+          ],
+          "agent_collaboration": [
+            {
+              "name": "Delegation completed",
+              "passed": false,
+              "evidence": "Delegations=0; artifacts=0",
+              "weight": 10.0
+            },
+            {
+              "name": "Controlled handoff sequence completed",
+              "passed": false,
+              "evidence": "Required=('grounding_started', 'grounding_completed', 'rpt_decision_failed', 'team_handoff_started', 'delegation_selected', 'artifact_received', 'orchestrator_message_delta', 'rpt_final_decision_failed', 'complete'); termination=None; errors=[]",
+              "weight": 10.0
+            }
+          ],
+          "chat_quality": [
+            {
+              "name": "Final Chat answer is present",
+              "passed": false,
+              "evidence": "Final answer omits available scenario profit figures.",
+              "weight": 10.0
+            },
+            {
+              "name": "Generated Chat answers are English",
+              "passed": false,
+              "evidence": "Final answer omits available scenario profit figures.",
+              "weight": 10.0
+            }
+          ],
+          "rpt_completion": [
+            {
+              "name": "Initial RPT lifecycle completed",
+              "passed": false,
+              "evidence": "Initial RPT lifecycle event present.",
+              "weight": 5.0
+            },
+            {
+              "name": "Final RPT lifecycle and completion are present",
+              "passed": false,
+              "evidence": "Final RPT=False; complete=False",
+              "weight": 5.0
+            }
+          ]
+        },
+        "scenario_checks": [
+          {
+            "name": "Verified SOP context reaches every Team handoff",
+            "passed": false,
+            "evidence": "Team handoffs=0; SOP context characters=0",
+            "weight": 0
+          },
+          {
+            "name": "Final Chat cites a verified SOP source",
+            "passed": false,
+            "evidence": "Verified SOP IDs=[]",
+            "weight": 0
+          },
+          {
+            "name": "Lemon product Context was resolved",
+            "passed": false,
+            "evidence": "Resolved=[]",
+            "weight": 0
+          },
+          {
+            "name": "Cost evidence and profitability calculation ran",
+            "passed": false,
+            "evidence": "Tools=[]",
+            "weight": 0
+          },
+          {
+            "name": "Final Chat cites available base and stress profit figures",
+            "passed": false,
+            "evidence": "",
+            "weight": 0
+          },
+          {
+            "name": "Configured required Tools executed",
+            "passed": true,
+            "evidence": "[]",
+            "weight": 0
+          },
+          {
+            "name": "Configured Context IDs resolved",
+            "passed": true,
+            "evidence": "[]",
+            "weight": 0
+          },
+          {
+            "name": "Configured answer evidence is present",
+            "passed": true,
+            "evidence": "",
+            "weight": 0
+          }
+        ],
+        "events": {
+          "count": 0,
+          "types": [],
+          "duration_seconds": 0.0
+        },
+        "sse_trace": [],
+        "tool_trace": [],
+        "final_chat_answer": "",
+        "final_rpt": null,
+        "rpt_status": {
+          "initial": {
+            "event": "missing",
+            "provider": null,
+            "reason": null
+          },
+          "final": {
+            "event": "missing",
+            "provider": null,
+            "reason": null
+          }
+        },
+        "agent_trace": [],
+        "joule": {
+          "configured": false,
+          "events": [],
+          "status": "not_configured",
+          "reason": "Joule target settings are absent."
+        },
+        "security": {
+          "no_unredacted_secret_pattern": true
+        },
+        "evidence_origin": "live_run",
+        "transport_error": "HTTPConnectionPool(host='127.0.0.1', port=8080): Read timed out."
+      },
+      {
+        "id": "allulose_introduction",
+        "title": "Register and introduce a new raw material into production",
+        "request": "We plan to use allulose sweetener in the next production run. Please proceed with the required process.",
+        "score": 0,
+        "passed": false,
+        "categories": {
+          "tool_a2a": [
+            {
+              "name": "LLM Tool contracts are executable",
+              "passed": false,
+              "evidence": "No valid Tool observation.",
+              "weight": 10.0
+            },
+            {
+              "name": "Tool Context IDs originate from resolution",
+              "passed": false,
+              "evidence": "Resolved=[]; used=[]",
+              "weight": 10.0
+            },
+            {
+              "name": "At least one read-only Tool observation was produced",
+              "passed": false,
+              "evidence": "Tools=[]",
+              "weight": 10.0
+            }
+          ],
+          "grounding_context": [
+            {
+              "name": "Required source-bound SOP Grounding precedes the business review",
+              "passed": false,
+              "evidence": "Grounding searches=0; completed=0",
+              "weight": 10.0
+            },
+            {
+              "name": "Source-bound business context reached collaboration",
+              "passed": false,
+              "evidence": "Resolved=[]; artifacts=0; source_bound=True",
+              "weight": 10.0
+            }
+          ],
+          "agent_collaboration": [
+            {
+              "name": "Delegation completed",
+              "passed": false,
+              "evidence": "Delegations=0; artifacts=0",
+              "weight": 10.0
+            },
+            {
+              "name": "Controlled handoff sequence completed",
+              "passed": false,
+              "evidence": "Required=('grounding_started', 'grounding_completed', 'rpt_decision_failed', 'team_handoff_started', 'delegation_selected', 'artifact_received', 'orchestrator_message_delta', 'rpt_final_decision_failed', 'complete'); termination=None; errors=[]",
+              "weight": 10.0
+            }
+          ],
+          "chat_quality": [
+            {
+              "name": "Final Chat answer is present",
+              "passed": false,
+              "evidence": "No final answer event.",
+              "weight": 10.0
+            },
+            {
+              "name": "Generated Chat answers are English",
+              "passed": false,
+              "evidence": "Missing final answer or Hangul detected.",
+              "weight": 10.0
+            }
+          ],
+          "rpt_completion": [
+            {
+              "name": "Initial RPT lifecycle completed",
+              "passed": false,
+              "evidence": "Initial RPT lifecycle event present.",
+              "weight": 5.0
+            },
+            {
+              "name": "Final RPT lifecycle and completion are present",
+              "passed": false,
+              "evidence": "Final RPT=False; complete=False",
+              "weight": 5.0
+            }
+          ]
+        },
+        "scenario_checks": [
+          {
+            "name": "Verified SOP context reaches every Team handoff",
+            "passed": false,
+            "evidence": "Team handoffs=0; SOP context characters=0",
+            "weight": 0
+          },
+          {
+            "name": "Final Chat cites a verified SOP source",
+            "passed": false,
+            "evidence": "Verified SOP IDs=[]",
+            "weight": 0
+          },
+          {
+            "name": "Answer preserves readiness or approval boundary",
+            "passed": false,
+            "evidence": "No final answer.",
+            "weight": 0
+          },
+          {
+            "name": "Configured required Tools executed",
+            "passed": true,
+            "evidence": "[]",
+            "weight": 0
+          },
+          {
+            "name": "Configured Context IDs resolved",
+            "passed": true,
+            "evidence": "[]",
+            "weight": 0
+          },
+          {
+            "name": "Configured answer evidence is present",
+            "passed": true,
+            "evidence": "",
+            "weight": 0
+          }
+        ],
+        "events": {
+          "count": 0,
+          "types": [],
+          "duration_seconds": 0.0
+        },
+        "sse_trace": [],
+        "tool_trace": [],
+        "final_chat_answer": "",
+        "final_rpt": null,
+        "rpt_status": {
+          "initial": {
+            "event": "missing",
+            "provider": null,
+            "reason": null
+          },
+          "final": {
+            "event": "missing",
+            "provider": null,
+            "reason": null
+          }
+        },
+        "agent_trace": [],
+        "joule": {
+          "configured": false,
+          "events": [],
+          "status": "not_configured",
+          "reason": "Joule target settings are absent."
+        },
+        "security": {
+          "no_unredacted_secret_pattern": true
+        },
+        "evidence_origin": "live_run",
+        "transport_error": "HTTPConnectionPool(host='127.0.0.1', port=8080): Read timed out."
+      },
+      {
+        "id": "cost_center_change",
+        "title": "Change the production-line cost center",
+        "request": "Please change the Cost Center for Beverage Line 1 starting next quarter.",
+        "score": 0,
+        "passed": false,
+        "categories": {
+          "tool_a2a": [
+            {
+              "name": "LLM Tool contracts are executable",
+              "passed": false,
+              "evidence": "No valid Tool observation.",
+              "weight": 10.0
+            },
+            {
+              "name": "Tool Context IDs originate from resolution",
+              "passed": false,
+              "evidence": "Resolved=[]; used=[]",
+              "weight": 10.0
+            },
+            {
+              "name": "At least one read-only Tool observation was produced",
+              "passed": false,
+              "evidence": "Tools=[]",
+              "weight": 10.0
+            }
+          ],
+          "grounding_context": [
+            {
+              "name": "Required source-bound SOP Grounding precedes the business review",
+              "passed": false,
+              "evidence": "Grounding searches=0; completed=0",
+              "weight": 10.0
+            },
+            {
+              "name": "Source-bound business context reached collaboration",
+              "passed": false,
+              "evidence": "Resolved=[]; artifacts=0; source_bound=True",
+              "weight": 10.0
+            }
+          ],
+          "agent_collaboration": [
+            {
+              "name": "Delegation completed",
+              "passed": false,
+              "evidence": "Delegations=0; artifacts=0",
+              "weight": 10.0
+            },
+            {
+              "name": "Controlled handoff sequence completed",
+              "passed": false,
+              "evidence": "Required=('grounding_started', 'grounding_completed', 'rpt_decision_failed', 'team_handoff_started', 'delegation_selected', 'artifact_received', 'orchestrator_message_delta', 'rpt_final_decision_failed', 'complete'); termination=None; errors=[]",
+              "weight": 10.0
+            }
+          ],
+          "chat_quality": [
+            {
+              "name": "Final Chat answer is present",
+              "passed": false,
+              "evidence": "No final answer event.",
+              "weight": 10.0
+            },
+            {
+              "name": "Generated Chat answers are English",
+              "passed": false,
+              "evidence": "Missing final answer or Hangul detected.",
+              "weight": 10.0
+            }
+          ],
+          "rpt_completion": [
+            {
+              "name": "Initial RPT lifecycle completed",
+              "passed": false,
+              "evidence": "Initial RPT lifecycle event present.",
+              "weight": 5.0
+            },
+            {
+              "name": "Final RPT lifecycle and completion are present",
+              "passed": false,
+              "evidence": "Final RPT=False; complete=False",
+              "weight": 5.0
+            }
+          ]
+        },
+        "scenario_checks": [
+          {
+            "name": "Verified SOP context reaches every Team handoff",
+            "passed": false,
+            "evidence": "Team handoffs=0; SOP context characters=0",
+            "weight": 0
+          },
+          {
+            "name": "Final Chat cites a verified SOP source",
+            "passed": false,
+            "evidence": "Verified SOP IDs=[]",
+            "weight": 0
+          },
+          {
+            "name": "Financial-control evidence is retrieved and answer does not claim an applied change",
+            "passed": false,
+            "evidence": "Domains=[]; answer=",
+            "weight": 0
+          },
+          {
+            "name": "Configured required Tools executed",
+            "passed": true,
+            "evidence": "[]",
+            "weight": 0
+          },
+          {
+            "name": "Configured Context IDs resolved",
+            "passed": true,
+            "evidence": "[]",
+            "weight": 0
+          },
+          {
+            "name": "Configured answer evidence is present",
+            "passed": true,
+            "evidence": "",
+            "weight": 0
+          }
+        ],
+        "events": {
+          "count": 0,
+          "types": [],
+          "duration_seconds": 0.0
+        },
+        "sse_trace": [],
+        "tool_trace": [],
+        "final_chat_answer": "",
+        "final_rpt": null,
+        "rpt_status": {
+          "initial": {
+            "event": "missing",
+            "provider": null,
+            "reason": null
+          },
+          "final": {
+            "event": "missing",
+            "provider": null,
+            "reason": null
+          }
+        },
+        "agent_trace": [],
+        "joule": {
+          "configured": false,
+          "events": [],
+          "status": "not_configured",
+          "reason": "Joule target settings are absent."
+        },
+        "security": {
+          "no_unredacted_secret_pattern": true
+        },
+        "evidence_origin": "live_run",
+        "transport_error": "HTTPConnectionPool(host='127.0.0.1', port=8080): Read timed out."
+      }
+    ],
+    "overall_score": 0.0
+  }
+}
