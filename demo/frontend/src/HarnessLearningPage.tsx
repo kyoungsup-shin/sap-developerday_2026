@@ -24,7 +24,7 @@ const steps: Step[] = [
   {
     eyebrow: "02 · DISCOVER",
     title: "등록된 Agent Card를 발견합니다",
-    description: "Orchestration Agent는 사용할 수 있는 Team Agent의 공개 카드와 역할을 확인합니다. 요청에 맞는 후보만 다음 판단에 남깁니다.",
+    description: "Custom Extension Assistant는 사용할 수 있는 Team Agent의 공개 카드와 역할을 확인합니다. 요청에 맞는 후보만 다음 판단에 남깁니다.",
     detail: "카드는 각 Team의 역할과 A2A 입력·출력 방식을 설명하지만, Harness가 카드 자체를 바꾸지는 않습니다.",
     control: "Agent Card는 등록 정보이며 runtime overlay로 변경하지 않음",
     active: ["orchestrator", "cards"],
@@ -73,7 +73,7 @@ const steps: Step[] = [
 
 const englishSteps: Step[] = [
   { eyebrow: "01 · INPUT", title: "Receive the field request safely", description: "An operator asks to review the purchase of a CIP pump mechanical seal kit. The Harness treats this as review input, not an execution instruction.", detail: "", control: "", active: ["request", "orchestrator"] },
-  { eyebrow: "02 · DISCOVER", title: "Discover registered Agent Cards", description: "The Orchestration Agent inspects the public cards and roles of available Team Agents, retaining only candidates relevant to the request.", detail: "Cards describe each Team's role and A2A input and output contract. The Harness never changes a card.", control: "Agent Cards are registered metadata · No runtime mutation", active: ["orchestrator", "cards"] },
+  { eyebrow: "02 · DISCOVER", title: "Discover registered Agent Cards", description: "The Custom Extension Assistant inspects the public cards and roles of available Team Agents, retaining only candidates relevant to the request.", detail: "Cards describe each Team's role and A2A input and output contract. The Harness never changes a card.", control: "Agent Cards are registered metadata · No runtime mutation", active: ["orchestrator", "cards"] },
   { eyebrow: "03 · OBSERVE", title: "Ground the request with SOP documents", description: "Grounding finds relevant procedures and operating criteria in SOP Data Documents. The Orchestrator reviews this evidence alongside the request and conversation context.", detail: "The SOP evidence becomes part of the review context passed to the Team Agent in the next step.", control: "Conversation history is bounded by length and character count", active: ["orchestrator", "grounding-return"] },
   { eyebrow: "04 · A2A HANDOFF", title: "Delegate the review to a Team Agent", description: "The selected Team receives an A2A Message and Task containing the purpose, request, grounding, and accumulated Artifacts.", detail: "The handoff envelope requires a registered target Agent ID and purpose. Unknown targets are rejected immediately.", control: "A2A contract and JSON schema are immutable", active: ["orchestrator", "team", "handoff"] },
   { eyebrow: "05 · TEAM EXECUTION", title: "Create evidence with specialists and read-only tools", description: "The Team Agent selects the required Specialists. Each Specialist can only use the tools in its role-specific allow-list, then the Team synthesizes one Artifact.", detail: "For example, procurement and inventory specialists collect supply and stock evidence before returning their Team review.", control: "Per-specialist tool allow-list · Read-only data", active: ["team", "specialist", "data", "artifact"] },
@@ -132,7 +132,7 @@ function Diagram({ active, sequence, connectionLabels, language }: { active: str
   ];
   return (
     <div className="learning-diagram">
-      <svg className="iso-diagram" viewBox="0 0 960 595" role="img" aria-label="A2A orchestration system flow">
+      <svg className="iso-diagram" viewBox="0 0 960 595" role="img" aria-label="A2A Custom Extension Assistant flow">
         <defs>
           <linearGradient id="server-top" x1="0" y1="0" x2="0" y2="1"><stop stopColor="#edf6ff"/><stop offset="1" stopColor="#cadff6"/></linearGradient>
           <linearGradient id="server-side" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#adc9e9"/><stop offset="1" stopColor="#87acd8"/></linearGradient>
@@ -240,7 +240,7 @@ export default function HarnessLearningPage({ language = "en" }: { language?: "k
           </nav>
         </section>
         <section className="learning-canvas">
-          <div className="canvas-header"><span>A2A ORCHESTRATION FLOW</span><span className="demo-chip">STEP {String(step + 1).padStart(2, "0")} · {current.eyebrow.replace(/^\d+ · /, "")}</span></div>
+          <div className="canvas-header"><span>A2A CUSTOM EXTENSION ASSISTANT FLOW</span><span className="demo-chip">STEP {String(step + 1).padStart(2, "0")} · {current.eyebrow.replace(/^\d+ · /, "")}</span></div>
           <ol className="learning-flow" aria-label={current.title}>
             {stepFlows[step].map((label, index) => <li key={label} className={current.active.includes("redelegate") && index === 2 ? "conditional" : current.active.includes("synthesis") && index === 3 ? "alternative" : undefined}>{label}</li>)}
           </ol>

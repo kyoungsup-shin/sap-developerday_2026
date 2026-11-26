@@ -37,7 +37,7 @@ def public_prompts(*, defaults_only: bool = False) -> dict[str, Any]:
         for specialist in team["sub_agents"]
     ]
     return {
-        "orchestrator": {"label": "Orchestration Agent", "prompt_key": ORCHESTRATOR_PROMPT_KEY, "system_prompt": get_prompt("roles.orchestrator") if defaults_only else orchestrator_system_prompt()},
+        "orchestrator": {"label": "Custom Extension Assistant", "prompt_key": ORCHESTRATOR_PROMPT_KEY, "system_prompt": get_prompt("roles.orchestrator") if defaults_only else orchestrator_system_prompt()},
         "team_agents": [
             {"agent_id": team["agent_id"], "label": team["agent_label"], "prompt_key": f"demo.team.{team['agent_id']}", "system_prompt": team_system_prompt(team, defaults_only=defaults_only)}
             for team in registered

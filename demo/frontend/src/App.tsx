@@ -1431,7 +1431,7 @@ function HarnessConsole() {
                   className={selectedPromptId === "orchestrator" ? "hierarchy-node orchestrator selected" : "hierarchy-node orchestrator"}
                   onClick={() => { setSelectedPromptId("orchestrator"); setPromptModalOpen(true); }}
                 >
-                  <img src={sapLogo} alt="SAP" /><span><em>ORCHESTRATOR</em><b>{prompts?.orchestrator.label ?? "Orchestration Agent"}</b><small>Routes requests and evaluates returned Artifacts</small></span>
+                  <img src={sapLogo} alt="SAP" /><span><em>ORCHESTRATOR</em><b>{prompts?.orchestrator.label ?? "Custom Extension Assistant"}</b><small>Routes requests and evaluates returned Artifacts</small></span>
                 </button>
                 <div className="hierarchy-connector"><span>delegates to</span></div>
                 <div className="team-hierarchy-list">
@@ -1564,7 +1564,7 @@ function HarnessConsole() {
           <section className="modal prompt-modal" role="dialog" aria-modal="true" aria-labelledby="prompt-modal-title" onMouseDown={(event) => event.stopPropagation()}>
             <header>
               <div>
-                <p className="kicker">{selectedPromptId === "orchestrator" ? "ORCHESTRATION AGENT · READ ONLY" : selectedPromptId.startsWith("specialist:") ? "SPECIALIST AGENT · READ ONLY" : "TEAM AGENT · READ ONLY"}</p>
+                <p className="kicker">{selectedPromptId === "orchestrator" ? "CUSTOM EXTENSION ASSISTANT · READ ONLY" : selectedPromptId.startsWith("specialist:") ? "SPECIALIST AGENT · READ ONLY" : "TEAM AGENT · READ ONLY"}</p>
                 <h2 id="prompt-modal-title">{selectedPrompt?.label ?? "System prompt"}</h2>
               </div>
               <button type="button" aria-label="Close system prompt" onClick={() => setPromptModalOpen(false)}>×</button>
