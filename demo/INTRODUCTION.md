@@ -60,17 +60,17 @@ SAP Managed Orchestrator (Step Decomposition)
 ├── Step 3 (SAP): Set up payroll account
 │           → SAP Managed Agent (SAP Payroll)
 │
-├── Step 4 (NON-SAP): Provision accounts in Slack / GitHub / Jira
+├── Step 4 (NON-SAP · Custom Extension Assistant): Provision accounts in Slack / GitHub / Jira
 │           → Custom Extension Assistant (Non-SAP)
 │                   ├── Slack Provisioning Agent
 │                   ├── GitHub Provisioning Agent
 │                   └── Jira Provisioning Agent
 │
-├── Step 5 (NON-SAP): Enroll in mandatory training on the corporate LMS
+├── Step 5 (NON-SAP · Custom Extension Assistant): Enroll in mandatory training on the corporate LMS
 │           → Custom Extension Assistant (Non-SAP)
 │                   └── LMS Enrollment Agent (Workday Learning)
 │
-└── Step 6 (NON-SAP): Send onboarding completion notification
+└── Step 6 (NON-SAP · Custom Extension Assistant): Send onboarding completion notification
             to the line manager through Slack
             → Custom Extension Assistant (Non-SAP)
                     └── Slack Notification Agent
