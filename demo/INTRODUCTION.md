@@ -27,14 +27,11 @@ By **separating orchestration, domain-specific agents, and system integrations**
   SAP Managed Orchestrator         Custom Orchestration Agent
                                          (Joule Studio)
              │                                 │
-             ▼                      ┌──────────┴──────────┐
-     SAP Managed Agents             ▼                     ▼
-             │              SAP Application      Non-SAP Application
-             ▼                  / Agent                 Agent
-      SAP Applications              │                     │
-                                    └──────────┬──────────┘
-                                               ▼
-                                  Consolidate Responses
+             ▼                                 ▼
+     SAP Managed Agents             Non-SAP Application Agent
+             │                                 │
+             ▼                                 ▼
+      SAP Applications            Consolidate Responses
                                        and Evidence
                                                │
                                                ▼
@@ -42,7 +39,7 @@ By **separating orchestration, domain-specific agents, and system integrations**
                                       Approval Policies
 ```
 
-The **Custom Orchestration path** connects SAP and Non-SAP environments through options such as A2A, MCP, and Integration Suite. A phased transition can be evaluated as SAP Native Orchestration support and compatibility evolve, with the aim of reusing existing agents and integration assets.
+The **Custom Orchestration path** delegates to Non-SAP Application Agents through options such as A2A, MCP, and Integration Suite. SAP Applications are served through the SAP Managed Orchestrator path. A phased transition can be evaluated as SAP Native Orchestration support and compatibility evolve, with the aim of reusing existing agents and integration assets.
 
 ### ■ Shared Resources
 
