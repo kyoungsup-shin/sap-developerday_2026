@@ -17,29 +17,76 @@ By **separating orchestration, domain-specific agents, and system integrations**
 ### ■ Workflow
 
 ```text
-                         User Request
-                              │
-                              ▼
-                      Joule User Interface
-                              │
-             ┌────────────────┴────────────────┐
-             ▼                                 ▼
-  SAP Managed Orchestrator         Custom Orchestration Agent
-                                         (Joule Studio)
-             │                                 │
-             ▼                                 ▼
-     SAP Managed Agents             Non-SAP Application Agent
-             │                                 │
-             ▼                                 ▼
-      SAP Applications            Consolidate Responses
-                                       and Evidence
-                                               │
-                                               ▼
-                                  Check Permissions and
-                                      Approval Policies
+                             User Request
+                                  │
+                                  ▼
+                        Joule User Interface
+                                  │
+                                  ▼
+                       SAP Managed Orchestrator ─── Lookup ───┐
+                                  │                             │
+                  ┌───────────────┴───────────────┐             ▼
+                  ▼                               ▼   Agent Card Registry
+      SAP Managed Agents              Custom Orchestration Agent  (Agent gateway)
+                  │                         (Joule Studio)             ▲
+                  │                               │                     │
+                  ▼                               └──── Lookup ────────┘
+          SAP Applications                         │
+                                                  ▼
+                                   Non-SAP Application Agent
+                                      (Kyma or Joule Studio)
+                                                  │
+                                                  ▼
+                                    Non-SAP Application
 ```
 
-The **Custom Orchestration path** delegates to Non-SAP Application Agents through options such as A2A, MCP, and Integration Suite. SAP Applications are served through the SAP Managed Orchestrator path. A phased transition can be evaluated as SAP Native Orchestration support and compatibility evolve, with the aim of reusing existing agents and integration assets.
+In the proposed architecture, the **SAP Managed Orchestrator and the Custom Orchestration Agent both consult the same Agent Card Registry** for agent discovery and metadata lookup. The SAP Managed Orchestrator receives requests from the Joule User Interface and delegates either to SAP Managed Agents or to the **Custom Orchestration Agent**. The Custom Orchestration Agent then delegates to Non-SAP Application Agents deployed on Kyma or built in Joule Studio. A2A supports agent-to-agent communication, while MCP and Integration Suite provide options for tool and system integration. A phased transition can be evaluated as SAP Native Orchestration support and compatibility evolve, with the aim of reusing existing agents and integration assets.
+
+### ■ Example: New-Hire Onboarding
+
+**User Request:**
+
+> "Process onboarding for new hire John Smith."
+
+```text
+SAP Managed Orchestrator (Step Decomposition)
+│
+├── Step 1: Register employee profile in SuccessFactors
+│           → SAP Managed Agent (SuccessFactors)
+│
+├── Step 2: Create IT equipment purchase request in SAP Ariba
+│           → SAP Managed Agent (Ariba)
+│
+├── Step 3: Set up payroll account
+│           → SAP Managed Agent (SAP Payroll)
+│
+├── Step 4: Provision accounts in Slack / GitHub / Jira
+│           → Custom Extension Assistant (Non-SAP)
+│                   ├── Slack Provisioning Agent
+│                   ├── GitHub Provisioning Agent
+│                   └── Jira Provisioning Agent
+│
+├── Step 5: Enroll in mandatory training on the corporate LMS
+│           → Custom Extension Assistant (Non-SAP)
+│                   └── LMS Enrollment Agent (Workday Learning)
+│
+└── Step 6: Send onboarding completion notification
+            to the line manager through Slack
+            → Custom Extension Assistant (Non-SAP)
+                    └── Slack Notification Agent
+```
+
+This example shows how one business request can combine SAP-managed onboarding steps with Non-SAP extension agents. The SAP Managed Orchestrator decomposes the request; the Custom Extension Assistant coordinates the selected Non-SAP agents.
+
+### ■ Agent Card Registry
+
+The planned **Agent Card Registry** centralizes Agent Card management for registered SAP and Non-SAP agents, including agents deployed on Kyma or built in Joule Studio. Both orchestrators use this single registry as a common source of agent metadata for discovery and delegation.
+
+- **Centralized Registration:** Manage agent identities, capabilities, endpoints, and authentication requirements in one registry
+- **Shared Agent Discovery:** Allow both orchestrators to discover candidate agents and retrieve their Agent Cards from the same registry before delegation
+- **Lifecycle and Governance:** Track Agent Card versions and manage which registered agents are available for orchestration
+
+The Registry manages metadata; each orchestrator sends execution requests directly to the selected agent endpoint.
 
 ### ■ Shared Resources
 
