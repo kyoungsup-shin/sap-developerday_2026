@@ -39,7 +39,7 @@ def _synthesis_artifact(summary: str, record: dict[str, Any] | None, context_id:
             "summary": summary, "summary_record": record, "grounding": grounding,
             "sop_sources": sources, "sop_source_ids": source_ids, "source_artifacts": evidence}
     artifact = Artifact(artifact_id=str(uuid4()), name="Final synthesis",
-                        description="Orchestrator synthesis of verified SOP and completed review evidence.",
+                        description="Custom Extension Assistant synthesis of verified SOP and completed review evidence.",
                         parts=[new_text_part(summary), new_data_part(data)])
     return MessageToDict(artifact, preserving_proto_field_name=True)
 
@@ -130,7 +130,7 @@ def _decide(request: str, history: list[dict[str, Any]], grounding: str, artifac
             return name, arguments
         except (TypeError, ValueError, KeyError, StopIteration):
             messages.append({"role": "user", "content": "Choose exactly one available capability with all required non-empty string arguments. Respect the handoff budget. " + ("Verified SOP evidence is missing: select search_grounding with a focused query before delegating or finishing." if not grounding else "Use the supplied verified SOP requirements.")})
-    raise HarnessError("invalid_orchestration", "The Orchestrator could not produce a valid capability decision.")
+    raise HarnessError("invalid_orchestration", "The Custom Extension Assistant could not produce a valid capability decision.")
 
 
 def _rpt_event(result: dict[str, Any], final: bool = False) -> dict[str, Any]:
@@ -198,7 +198,7 @@ def _run_handoff_stream(request: str, history: list[dict[str, Any]], repository_
         yield {"type": "agent_cards_discovered", "cards": {key: MessageToDict(card, preserving_proto_field_name=True) for key, card in cards.items()}}
         capability, sop_request = _decide(request, history, "", artifacts, cards, max_handoffs, failures)
         if capability != "search_grounding":
-            raise HarnessError("sop_required", "The Orchestrator did not request required SOP evidence. The business review was not started.")
+            raise HarnessError("sop_required", "The Custom Extension Assistant did not request required SOP evidence. The business review was not started.")
         query = sop_request["query"]
         yield {"type": "grounding_started", "query": query, "reason": sop_request["reason"]}
         try:
@@ -264,7 +264,7 @@ def _run_handoff_stream(request: str, history: list[dict[str, Any]], repository_
                 failures.append(failure)
                 yield failure
         if not final_summary:
-            raise HarnessError("missing_final_response", "The Orchestrator did not produce a final response within the handoff limit.")
+            raise HarnessError("missing_final_response", "The Custom Extension Assistant did not produce a final response within the handoff limit.")
         if failures and not any(artifact.get("team_id") != "joule-work-agent" for artifact in artifacts):
             termination = "failed"
     except Exception as error:

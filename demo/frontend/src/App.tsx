@@ -746,7 +746,7 @@ function HarnessConsole() {
         }),
       },
     ]);
-    setTypingAgents([{ id: "orchestrator", label: "ORCHESTRATOR", role: "orchestrator" }]);
+    setTypingAgents([{ id: "orchestrator", label: "CUSTOM EXTENSION ASSISTANT", role: "orchestrator" }]);
     setMessage("");
     setEvents([]);
     setJouleCardVerified(false);
@@ -892,7 +892,7 @@ function HarnessConsole() {
               setChat((previous) => previous.some((message) => message.id === messageId) ? previous : [
                 ...previous,
                 {
-                  id: messageId, role: "assistant", body: "I received the Orchestrator's review request. I will select the relevant Specialists.",
+                  id: messageId, role: "assistant", body: "I received the Custom Extension Assistant's review request. I will select the relevant Specialists.",
                   time: item.at, actor: "team", agentName: teamLabel,
                 },
               ]);
@@ -900,7 +900,7 @@ function HarnessConsole() {
             if (kind === "delegation_started" && teamId) {
               const messageId = teamStartMessageIds.current[teamHandoffKey];
               if (messageId) setChat((previous) => previous.map((message) => message.id === messageId
-                ? { ...message, body: "I received the Orchestrator's review request. I am selecting the relevant Specialists.", time: item.at }
+                ? { ...message, body: "I received the Custom Extension Assistant's review request. I am selecting the relevant Specialists.", time: item.at }
                 : message));
             }
             if (kind === "delegation_selected" && teamId) {
@@ -915,15 +915,15 @@ function HarnessConsole() {
               if (messageId) setChat((previous) => previous.map((message) => message.id === messageId
                 ? { ...message, body: selected.length
                   ? goals.length
-                    ? `I received the Orchestrator's review request. I delegated the review:\n\n${goals.join("\n")}`
-                    : `I received the Orchestrator's review request. I delegated the review to ${selected.join(" and ")}.`
-                  : "I received the Orchestrator's review request. I will continue the review with the available Specialist.", time: item.at }
+                    ? `I received the Custom Extension Assistant's review request. I delegated the review:\n\n${goals.join("\n")}`
+                    : `I received the Custom Extension Assistant's review request. I delegated the review to ${selected.join(" and ")}.`
+                  : "I received the Custom Extension Assistant's review request. I will continue the review with the available Specialist.", time: item.at }
                 : message));
             }
             if (kind === "orchestration_decision" && (data.decision as Record<string, unknown> | undefined)?.action === "complete")
-              addTypingAgent({ id: "orchestrator", label: "ORCHESTRATOR · PREPARING FINAL RESPONSE", role: "orchestrator" });
+              addTypingAgent({ id: "orchestrator", label: "CUSTOM EXTENSION ASSISTANT · PREPARING FINAL RESPONSE", role: "orchestrator" });
             if (kind === "artifact_received" || kind === "team_handoff_failed")
-              addTypingAgent({ id: "orchestrator", label: "ORCHESTRATOR · REVIEWING EVIDENCE", role: "orchestrator" });
+              addTypingAgent({ id: "orchestrator", label: "CUSTOM EXTENSION ASSISTANT · REVIEWING EVIDENCE", role: "orchestrator" });
             if ((kind === "team_handoff_started" || kind === "delegation_started") && teamId)
               addTypingAgent({ id: "team:" + teamId, label: "TEAM ASSISTANT · " + teamLabel, role: "team" });
             if (kind === "subagent_started") {
@@ -1074,7 +1074,7 @@ function HarnessConsole() {
             <b>Request context</b>
             <p>
               The operator request and this session’s prior messages are
-              supplied to the Orchestrator.
+              supplied to the Custom Extension Assistant.
             </p>
           </div>
           <em>
@@ -1136,7 +1136,7 @@ function HarnessConsole() {
               alt="Joule"
             />
             <div>
-              <strong>Orchestrator Harness</strong>
+              <strong>Custom Extension Assistant Harness</strong>
               <small>F&amp;B OPERATIONS · A2A SANDBOX</small>
             </div>
           </div>
@@ -1202,7 +1202,7 @@ function HarnessConsole() {
             alt="Joule"
           />
           <div>
-            <strong>Orchestrator Harness</strong>
+            <strong>Custom Extension Assistant Harness</strong>
             <small>F&amp;B OPERATIONS · A2A SANDBOX</small>
           </div>
         </div>
@@ -1268,7 +1268,7 @@ function HarnessConsole() {
                 </div>
                 <div>
                   <div className="message-meta">
-                    {item.role === "user" ? "OPERATOR" : item.actor === "joule" ? "JOULE WORK AGENT" : item.actor === "subagent" ? `SPECIALIST AGENT · ${item.agentName ?? "Specialist Agent"}` : item.actor === "team" ? `TEAM ASSISTANT · ${item.agentName ?? "Team Agent"}` : "ORCHESTRATOR"}{" "}
+                    {item.role === "user" ? "OPERATOR" : item.actor === "joule" ? "JOULE WORK AGENT" : item.actor === "subagent" ? `SPECIALIST AGENT · ${item.agentName ?? "Specialist Agent"}` : item.actor === "team" ? `TEAM ASSISTANT · ${item.agentName ?? "Team Agent"}` : "CUSTOM EXTENSION ASSISTANT"}{" "}
                     <span>{item.time}</span>
                   </div>
                   {item.observation ? <ObservationResult result={item.observation} step={item.observationStep} /> : item.grounding ? <GroundingResult result={item.grounding} /> : item.rptDecision ? <RptDecisionResult result={item.rptDecision} /> : item.loading ? <div className="typing-bubble"><i /><i /><i /></div> : <MarkdownMessage body={item.body} toolCalls={item.toolCalls} formatStructured={item.role === "assistant"} />}
@@ -1372,7 +1372,7 @@ function HarnessConsole() {
               <div className={running ? "a2a-graph running" : "a2a-graph"}>
                 <article className={running && events.length === 0 ? "graph-node orchestrator live" : "graph-node orchestrator"}>
                   <img src={sapLogo} alt="SAP" />
-                  <div><b>ORCHESTRATOR</b><small>{running ? "Routing live" : "Route coordinator"}</small></div>
+                  <div><b>CUSTOM EXTENSION ASSISTANT</b><small>{running ? "Routing live" : "Route coordinator"}</small></div>
                 </article>
                 <div className="graph-connector grounding-connector"><span>retrieve context</span></div>
                 <article className={groundingInProgress ? "graph-node grounding fetching" : events.some((event) => event.type === "grounding_completed") ? "graph-node grounding active" : "graph-node grounding"}>
@@ -1431,7 +1431,7 @@ function HarnessConsole() {
                   className={selectedPromptId === "orchestrator" ? "hierarchy-node orchestrator selected" : "hierarchy-node orchestrator"}
                   onClick={() => { setSelectedPromptId("orchestrator"); setPromptModalOpen(true); }}
                 >
-                  <img src={sapLogo} alt="SAP" /><span><em>ORCHESTRATOR</em><b>{prompts?.orchestrator.label ?? "Custom Extension Assistant"}</b><small>Routes requests and evaluates returned Artifacts</small></span>
+                  <img src={sapLogo} alt="SAP" /><span><em>CUSTOM EXTENSION ASSISTANT</em><b>{prompts?.orchestrator.label ?? "Custom Extension Assistant"}</b><small>Routes requests and evaluates returned Artifacts</small></span>
                 </button>
                 <div className="hierarchy-connector"><span>delegates to</span></div>
                 <div className="team-hierarchy-list">

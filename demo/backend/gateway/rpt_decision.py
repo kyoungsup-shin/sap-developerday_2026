@@ -316,5 +316,5 @@ def decide(request: str, grounding_context: str, artifacts: list[dict[str, Any]]
         "team_rankings": _team_rankings(grounded_state, _choice(answers, "next_agent")),
         "answers": answers, "usage": payload.get("usage", {}) if isinstance(payload, dict) else {},
         "provider": provider, "fallback_reason": fallback_reason,
-        "execution_boundary": "Read-only RPT assessment; the Orchestrator retains all routing and no external action is authorized.",
+        "execution_boundary": "Read-only RPT assessment; the Custom Extension Assistant retains all routing and no external action is authorized.",
     }

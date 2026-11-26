@@ -32,7 +32,7 @@ const steps: Step[] = [
   {
     eyebrow: "03 · OBSERVE",
     title: "SOP 문서에서 업무 근거를 확인합니다",
-    description: "Grounding이 SOP Data Documents에서 요청과 관련된 절차와 운영 기준을 찾습니다. Orchestrator는 이 근거를 요청 및 대화 맥락과 함께 확인합니다.",
+    description: "Grounding이 SOP Data Documents에서 요청과 관련된 절차와 운영 기준을 찾습니다. Custom Extension Assistant는 이 근거를 요청 및 대화 맥락과 함께 확인합니다.",
     detail: "확인한 SOP 근거는 다음 단계에서 Team Agent에 전달할 검토 맥락이 됩니다.",
     control: "대화 이력은 길이와 문자 수를 제한해 전달",
     active: ["orchestrator", "grounding-return"],
@@ -56,7 +56,7 @@ const steps: Step[] = [
   {
     eyebrow: "06 · LOOP + COMPLETE",
     title: "Artifact를 검토하고 다음 작업을 분기합니다",
-    description: "A2A Artifact를 받은 Orchestrator는 ReAct로 근거를 다시 검토합니다. 추가 검토가 필요하면 Team Assistant에 재위임하고, 근거가 충분하면 최종 Synthesis Artifact를 만듭니다.",
+    description: "A2A Artifact를 받은 Custom Extension Assistant는 ReAct로 근거를 다시 검토합니다. 추가 검토가 필요하면 Team Assistant에 재위임하고, 근거가 충분하면 최종 Synthesis Artifact를 만듭니다.",
     detail: "실선은 Artifact 반환과 최종 Synthesis, 점선은 추가 근거가 필요할 때의 재위임 경로입니다. 반복은 최대 8회입니다.",
     control: "반복 횟수 상한 · 승인 대기 상태를 명시",
     active: ["artifact", "orchestrator", "team", "loop", "redelegate", "synthesis"],
@@ -74,20 +74,20 @@ const steps: Step[] = [
 const englishSteps: Step[] = [
   { eyebrow: "01 · INPUT", title: "Receive the field request safely", description: "An operator asks to review the purchase of a CIP pump mechanical seal kit. The Harness treats this as review input, not an execution instruction.", detail: "", control: "", active: ["request", "orchestrator"] },
   { eyebrow: "02 · DISCOVER", title: "Discover registered Agent Cards", description: "The Custom Extension Assistant inspects the public cards and roles of available Team Agents, retaining only candidates relevant to the request.", detail: "Cards describe each Team's role and A2A input and output contract. The Harness never changes a card.", control: "Agent Cards are registered metadata · No runtime mutation", active: ["orchestrator", "cards"] },
-  { eyebrow: "03 · OBSERVE", title: "Ground the request with SOP documents", description: "Grounding finds relevant procedures and operating criteria in SOP Data Documents. The Orchestrator reviews this evidence alongside the request and conversation context.", detail: "The SOP evidence becomes part of the review context passed to the Team Agent in the next step.", control: "Conversation history is bounded by length and character count", active: ["orchestrator", "grounding-return"] },
+  { eyebrow: "03 · OBSERVE", title: "Ground the request with SOP documents", description: "Grounding finds relevant procedures and operating criteria in SOP Data Documents. The Custom Extension Assistant reviews this evidence alongside the request and conversation context.", detail: "The SOP evidence becomes part of the review context passed to the Team Agent in the next step.", control: "Conversation history is bounded by length and character count", active: ["orchestrator", "grounding-return"] },
   { eyebrow: "04 · A2A HANDOFF", title: "Delegate the review to a Team Agent", description: "The selected Team receives an A2A Message and Task containing the purpose, request, grounding, and accumulated Artifacts.", detail: "The handoff envelope requires a registered target Agent ID and purpose. Unknown targets are rejected immediately.", control: "A2A contract and JSON schema are immutable", active: ["orchestrator", "team", "handoff"] },
   { eyebrow: "05 · TEAM EXECUTION", title: "Create evidence with specialists and read-only tools", description: "The Team Agent selects the required Specialists. Each Specialist can only use the tools in its role-specific allow-list, then the Team synthesizes one Artifact.", detail: "For example, procurement and inventory specialists collect supply and stock evidence before returning their Team review.", control: "Per-specialist tool allow-list · Read-only data", active: ["team", "specialist", "data", "artifact"] },
-  { eyebrow: "06 · LOOP + COMPLETE", title: "Review the Artifact and branch the next action", description: "The Orchestrator receives the A2A Artifact and re-evaluates the evidence with ReAct. It re-delegates to the Team Assistant when more review is needed, or creates a final Synthesis Artifact when the evidence is sufficient.", detail: "Solid lines show Artifact return and final synthesis. The dashed line shows re-delegation when more evidence is needed. The loop is capped at eight iterations.", control: "Iteration limit · Explicit approval-pending state", active: ["artifact", "orchestrator", "team", "loop", "redelegate", "synthesis"] },
+  { eyebrow: "06 · LOOP + COMPLETE", title: "Review the Artifact and branch the next action", description: "The Custom Extension Assistant receives the A2A Artifact and re-evaluates the evidence with ReAct. It re-delegates to the Team Assistant when more review is needed, or creates a final Synthesis Artifact when the evidence is sufficient.", detail: "Solid lines show Artifact return and final synthesis. The dashed line shows re-delegation when more evidence is needed. The loop is capped at eight iterations.", control: "Iteration limit · Explicit approval-pending state", active: ["artifact", "orchestrator", "team", "loop", "redelegate", "synthesis"] },
   { eyebrow: "07 · RPT + HITL", title: "Connect human review after the RPT decision", description: "The final Artifact is passed to the RPT Decision Model. When review is required, Human-in-the-Loop receives an approval or additional-evidence request.", detail: "HITL input is used only as evidence for the final response and never changes an external system directly.", control: "Visible RPT evidence · No external execution before human approval", active: ["artifact", "rpt", "hitl"] },
 ];
 
 const stepFlows = [
-  ["Field Request", "Orchestrator"],
-  ["Skills + Agent Cards", "Orchestrator"],
-  ["SOP Documents", "Grounding", "Orchestrator"],
-  ["Orchestrator", "Team Assistant"],
+  ["Field Request", "Custom Extension Assistant"],
+  ["Skills + Agent Cards", "Custom Extension Assistant"],
+  ["SOP Documents", "Grounding", "Custom Extension Assistant"],
+  ["Custom Extension Assistant", "Team Assistant"],
   ["Team Assistant", "Read-only Tools", "Business Data", "A2A Artifact"],
-  ["A2A Artifact", "Orchestrator", "Team Assistant · more evidence", "A2A Artifact · final synthesis"],
+  ["A2A Artifact", "Custom Extension Assistant", "Team Assistant · more evidence", "A2A Artifact · final synthesis"],
   ["A2A Artifact", "RPT Decision Model", "Human in the Loop"],
 ];
 
@@ -162,7 +162,7 @@ function Diagram({ active, sequence, connectionLabels, language }: { active: str
           <path d="M430 128Q480 96 530 128L602 170V285Q602 310 580 322L500 370Q480 382 460 370L380 322Q358 310 358 285V170Z" fill="url(#server-side)" stroke="#282523" strokeWidth="5"/>
           <path d="M358 170L458 226Q480 238 502 226L602 170L530 128Q480 96 430 128Z" fill="url(#server-top)" stroke="#282523" strokeWidth="5"/>
           <image href={sapLogo} x="448" y="184" width="64" height="36" preserveAspectRatio="xMidYMid meet"/>
-          <text x="480" y="282" className="iso-label" textAnchor="middle">ORCHESTRATOR</text>
+          <text x="480" y="282" className="iso-label" textAnchor="middle">CUSTOM EXTENSION ASSISTANT</text>
         </g>
         {nodes.map((node) => (
           <g key={node.label} className={`iso-node ${isActive(node.id) ? "active" : ""}`}>
@@ -215,7 +215,7 @@ export default function HarnessLearningPage({ language = "en" }: { language?: "k
   return (
     <main className="harness-learning">
       <header className="learning-header">
-        <a href="#/" className="learning-brand"><img src={jouleLogo} alt="Joule" /><span><b>Orchestrator Harness</b><small>INTERACTIVE ARCHITECTURE</small></span></a>
+        <a href="#/" className="learning-brand"><img src={jouleLogo} alt="Joule" /><span><b>Custom Extension Assistant Harness</b><small>INTERACTIVE ARCHITECTURE</small></span></a>
         <div className="learning-header-actions">
           <a className="back-to-console" href="#/">← {language === "en" ? "Back to console" : "콘솔로 돌아가기"}</a>
         </div>

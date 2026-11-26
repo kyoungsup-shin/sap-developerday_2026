@@ -51,26 +51,26 @@ In the proposed architecture, the **SAP Managed Orchestrator and the Custom Orch
 ```text
 SAP Managed Orchestrator (Step Decomposition)
 │
-├── Step 1: Register employee profile in SuccessFactors
+├── Step 1 (SAP): Register employee profile in SuccessFactors
 │           → SAP Managed Agent (SuccessFactors)
 │
-├── Step 2: Create IT equipment purchase request in SAP Ariba
+├── Step 2 (SAP): Create IT equipment purchase request in SAP Ariba
 │           → SAP Managed Agent (Ariba)
 │
-├── Step 3: Set up payroll account
+├── Step 3 (SAP): Set up payroll account
 │           → SAP Managed Agent (SAP Payroll)
 │
-├── Step 4: Provision accounts in Slack / GitHub / Jira
+├── Step 4 (NON-SAP): Provision accounts in Slack / GitHub / Jira
 │           → Custom Extension Assistant (Non-SAP)
 │                   ├── Slack Provisioning Agent
 │                   ├── GitHub Provisioning Agent
 │                   └── Jira Provisioning Agent
 │
-├── Step 5: Enroll in mandatory training on the corporate LMS
+├── Step 5 (NON-SAP): Enroll in mandatory training on the corporate LMS
 │           → Custom Extension Assistant (Non-SAP)
 │                   └── LMS Enrollment Agent (Workday Learning)
 │
-└── Step 6: Send onboarding completion notification
+└── Step 6 (NON-SAP): Send onboarding completion notification
             to the line manager through Slack
             → Custom Extension Assistant (Non-SAP)
                     └── Slack Notification Agent

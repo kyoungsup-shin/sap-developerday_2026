@@ -1,5 +1,5 @@
 next_agent:
-  instructions: Select the first F&B Team Assistant that should perform a read-only review of the unresolved fact. Choose exactly one listed Team ID. This is a recommendation for the Orchestrator, not an authorization to perform a write action.
+  instructions: Select the first F&B Team Assistant that should perform a read-only review of the unresolved fact. Choose exactly one listed Team ID. This is a recommendation for the Custom Extension Assistant, not an authorization to perform a write action.
   criteria:
     fb-facilities-team: Equipment identity, maintenance, mechanical constraints, asset condition, or operating impact.
     fb-procurement-team: Procurement, supplier, purchase request, inventory, supply availability, lead time, or sourcing options.
